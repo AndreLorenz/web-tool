@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <tree-grid on-click="$ctrl.onClike(branch)" tree-data="$ctrl.tree" expand-level="1" icon-leaf= "glyphicon glyphicon-globe"></tree-grid>
+        </div>
+        <div class="col-md-8">
+            {{$ctrl.src}}
+                <form class="form-inline" ng-if="$ctrl.content">
+                    <div class="form-group">
+                        <label for="fileName">Filename</label>
+                    <input type="text" ng-model="$ctrl.name" ng-disabled="!$ctrl.allowEdit" class="form-control" id="fileName">
+                    .js
+                    </div>
+                </form>
+
+            <div ng-if="$ctrl.content && !$ctrl.allowEdit">
+                <pre>{{$ctrl.content}}</pre>
+                <button ng-click="$ctrl.allowEdit = true">Editar</button>
+            </div>
+            <div ng-if="$ctrl.allowEdit">
+                <textarea class="form-control" ng-attr-rows="{{$ctrl.contentRows}}" ng-model="$ctrl.content"></textarea>
+                <button ng-click="$ctrl.save(branch)">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
