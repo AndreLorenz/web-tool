@@ -1,0 +1,20 @@
+<hr class="hr col-md-10" />
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<form class="form-horizontal" ng-submit="$ctrl.save($ctrl.config)">
+				<h1>Tasy Schematics Structure Tool</h1>
+				<p>Hello {{$ctrl.user.name}} Create your function structure on GitHub.</p>
+				<hr class="hr col-md-10" />
+				<div class="control-group form-group">
+					<input-list values="$ctrl.modules" label="Module name:" model="$ctrl.config.module" id="module" labelnew="Module"></input-list>
+					<input-list values="$ctrl.modules" label="Schematics function code:" model="$ctrl.config.schematicsCode" id="schematicsFunctionCode"
+					  type="number"></input-list>
+				</div>
+				<button type="submit" class="btn btn-success">Create Structure</button>
+				<button type="button" ng-click="$ctrl.logout()" class="btn btn-success">Logout</button>
+			</form>
+		</div>
+	</div>
+</div>
+<hr class="hr col-md-10" />

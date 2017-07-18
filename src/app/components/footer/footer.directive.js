@@ -3,20 +3,23 @@
 import footerTpl from './footer.html';
 
 function footerComponent($log) {
-	'ngInject';
+  'ngInject';
 
   var directive = {
     restrict: 'E',
     templateUrl: footerTpl,
     controller: FooterController,
     controllerAs: 'vm',
-    bindToController: true
+    scope: true,
+    bindToController: {
+
+    }
   };
 
   return directive;
 
-  function FooterController () {
-	  $log.debug('Hello from footer controller!');
+  function FooterController() {
+    $log.debug('Hello from footer controller!');
   }
 
 }

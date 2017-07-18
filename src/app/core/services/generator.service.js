@@ -9,7 +9,7 @@ export class GeneratorService {
 	getGeneratorFiles() {
 		const config = {
 			method: 'GET',
-			url: `http://localhost:8784/generator`
+			url: `http://10.125.2.54:8784/generator`
 		};
 		this.$http(config).then(res => {
 			this.$rootScope.$broadcast('getGeneratorFilesSuccess', res.data);
@@ -21,7 +21,7 @@ export class GeneratorService {
 	getUser() {
 		const config = {
 			method: 'GET',
-			url: `http://localhost:8784/user`
+			url: `http://10.125.2.54:8784/user`
 		};
 		this.$http(config).then(res => {
 			this.$rootScope.$broadcast('getUserSuccess', res.data);

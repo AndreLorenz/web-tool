@@ -1,11 +1,11 @@
 'use strict';
 
-import footerDirective from './navbar.directive';
-import './navbar.scss';
+import navbarDirective from './navbar.directive';
+import './navbar.css';
 
-const footerModule = angular.module('navbar-module', []);
+const navbarModule = angular.module('navbar-module', []);
 
-footerModule
-  .directive('navbar', footerDirective);
+navbarModule
+  .directive('navbar', navbarDirective);
 
-export default footerModule;
+export default navbarModule;

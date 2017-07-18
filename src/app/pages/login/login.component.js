@@ -14,6 +14,10 @@ class LoginController {
 		return this.authService.signin(user).then(() => this.$state.transitionTo('generator'));
 	}
 
+	clear() {
+		this.github = {}
+	}
+
 }
 
 export default {

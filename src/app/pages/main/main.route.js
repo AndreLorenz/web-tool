@@ -27,6 +27,10 @@ function routeConfig($stateProvider) {
       url: '/generator',
       component: 'generatorComponent',
     })
+    .state('settings', {
+      url: '/settings',
+      component: 'settingsComponent',
+    })
     .state('preview-generator', {
       url: '/preview-generator',
       component: 'previewGeneratorComponent',

@@ -1,11 +1,29 @@
+// $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+// @import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+html {
+  height: 100%;
+}
 
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-
-
-html { height: 100%; }
 body {
   min-height: 100%;
   position: relative;
   padding-bottom: 60px;
+}
+
+.main {
+  padding-top: 77px;
+}
+
+.btn .btn-sucess {
+  background-color: #A5D424 !important;
+}
+
+.span12 {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.form-horizontal {
+  width: 400px;
+  margin: 0 auto;
 }

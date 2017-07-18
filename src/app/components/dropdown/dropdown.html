@@ -1,0 +1,11 @@
+<div class="dropdown">
+  <a href="#" class="btn dropdown-toggle dropdown-user" data-toggle="dropdown" id="navbarDropdown">
+    	  {{vm.username}}
+      </a>
+  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+    <div ng-repeat="item in vm.values">
+      <a ng-if="item.type == 'menu'" class="dropdown-item" ng-click="vm.execAction(item.action)"><i ng-if="item.icon" class="now-ui-icons {{item.icon}}"></i> {{item.value}}</a>
+      <div ng-if="item.type == 'divider'" class="dropdown-divider"></div>
+    </div>
+  </ul>
+</div>
