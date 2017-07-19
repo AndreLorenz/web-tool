@@ -11,7 +11,7 @@ class LoginController {
 	}
 
 	login(user) {
-		return this.authService.signin(user).then(() => this.$state.transitionTo('generator'));
+		return this.authService.signin(user).then(() => this.$state.transitionTo('home'));
 	}
 
 	clear() {

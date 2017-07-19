@@ -20,6 +20,7 @@ function footerComponent($log) {
 
   function FooterController() {
     $log.debug('Hello from footer controller!');
+    this.year = new Date().getFullYear();
   }
 
 }

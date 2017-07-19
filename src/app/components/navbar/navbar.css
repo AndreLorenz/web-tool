@@ -10,7 +10,7 @@
      background-origin: initial;
      background-clip: initial;
      background-color: initial;
-     position: absolute !important;
+     position: fixed !important;
      top: 0;
      left: 0;
      right: 0;

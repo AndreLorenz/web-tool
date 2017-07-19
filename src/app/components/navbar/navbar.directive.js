@@ -22,7 +22,7 @@ function navbarComponent($log) {
     'ngInject';
     if (authService.getUser()) {
       this.userLogo = authService.getUser().avatar_url;
-      this.username = authService.getUser().name;
+      this.username = authService.getUser().name || 'User Name';
     }
     $scope.$on("userLogged", (event, res) => {
       this.userLogo = res.avatar_url;
@@ -33,7 +33,7 @@ function navbarComponent($log) {
       authService.logout();
       $state.transitionTo('login');
       this.userLogo = undefined;
-      this.username = undefined || 'User Name';
+      this.username = undefined;
     }
 
     this.settings = () => {

@@ -7,21 +7,19 @@ function routeConfig($stateProvider) {
   'ngInject';
 
   $stateProvider
-    .state('main', {
-      url: '/',
-      templateUrl: mainTpl,
-      controller: mainController,
-      controllerAs: 'main'
-    })
     .state('login', {
-      url: '/login',
+      url: '/',
       component: 'loginComponent',
       onEnter: (authService, $state) => {
         if (authService.getToken()) {
-          return $state.transitionTo('generator');
+          return $state.transitionTo('home');
         }
         return true;
       }
+    })
+    .state('home', {
+      url: '/',
+      component: 'homeComponent'
     })
     .state('generator', {
       url: '/generator',

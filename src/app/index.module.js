@@ -24,6 +24,7 @@ const App = angular.module(
     "ngMessages",
     "ngAria",
     "treeGrid",
+    "angucomplete-alt",
 
     // core
     coreModule.name,

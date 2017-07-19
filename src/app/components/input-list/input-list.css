@@ -10,6 +10,11 @@
   border-radius: 10px;
   padding: 3px;
   top: 5px;
+  overflow: auto;
+  max-height: 200px;
+  -webkit-rtl-ordering: logical;
+  list-style: none;
+  align-items: center;
   z-index: 5;
 }
 
@@ -32,4 +37,20 @@
 
 .list-group .create {
   background-color: #bcd8e5
+}
+
+ ::-webkit-scrollbar-track {
+  background-color: #F4F4F4;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background: #F4F4F4;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dad7d7;
+  border-radius: 50px;
 }

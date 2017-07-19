@@ -39,7 +39,13 @@ function inputListComponent($log) {
     this.click = value => {
       this.model = value;
       this.focus = false;
+      console.log("click");
     }
+
+    this.focusLost = value => {
+      console.log("blur");
+      this.focus = false;
+    };
   }
 
 }
