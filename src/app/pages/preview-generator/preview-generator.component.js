@@ -31,7 +31,9 @@ class PreviewGeneratorController {
     });
   }
 
-
+  edit() {
+    this.editorOptions.readOnly = false;
+  }
 
   onClike(item) {
     if (item.children.length > 0) {

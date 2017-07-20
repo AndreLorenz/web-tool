@@ -30,7 +30,7 @@ class GeneratorController {
   }
 
   createStructure(config) {
-
+    
   }
 
   logout() {
