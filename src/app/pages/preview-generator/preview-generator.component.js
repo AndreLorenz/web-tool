@@ -41,6 +41,7 @@ class PreviewGeneratorController {
     } else {
       this.contentRows = item.content.split('\n').length;
       this.content = item.content;
+      this.oldContent = item.content;
       this.name = item.name.replace('.js', '');
       this.oldName = this.name;
       this.src = item.src;
@@ -51,6 +52,12 @@ class PreviewGeneratorController {
   save() {
     this.editorOptions.readOnly = true;
     this.saveFile(this.tree);
+  }
+
+
+  undoChanges() {
+    this.editorOptions.readOnly = true;
+    this.content = this.oldContent;
   }
 
   saveFile(tree) {
