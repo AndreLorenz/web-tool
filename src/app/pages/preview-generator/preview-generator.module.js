@@ -1,7 +1,7 @@
 'use strict';
 
 import previewGeneratorComponent from './preview-generator.component';
-import './preview-generator.scss';
+import './preview-generator.css';
 
 const previewGeneratorModule = angular.module('preview-generator-module', []);
 

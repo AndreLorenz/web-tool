@@ -1,26 +1,45 @@
+<!-- <hr class="hr col-md-10" />
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <tree-grid on-click="$ctrl.onClike(branch)" tree-data="$ctrl.tree" expand-level="1" icon-leaf= "glyphicon glyphicon-globe"></tree-grid>
+            <tree-grid on-click="$ctrl.onClike(branch)" tree-data="$ctrl.tree" expand-level="1" icon-leaf="indented tree-icon now-ui-icons design-2_html5"
+                icon-expand="indented tree-icon glyphicon fa icon-folder-close glyphicon-folder-close fa-folder-close" icon-collapse="indented tree-icon glyphicon fa icon-folder-open glyphicon-folder-open fa-folder-open"></tree-grid>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-5">
             {{$ctrl.src}}
-                <form class="form-inline" ng-if="$ctrl.content">
-                    <div class="form-group">
-                        <label for="fileName">Filename</label>
-                    <input type="text" ng-model="$ctrl.name" ng-disabled="!$ctrl.allowEdit" class="form-control" id="fileName">
-                    .js
-                    </div>
-                </form>
+            <form class="form-inline" ng-if="$ctrl.content">
+                <div class="form-group">
+                    <hr class="hr col-md-10" />
+                    <label for="fileName">Filename</label>
+                    <input type="text" ng-model="$ctrl.name" ng-disabled="!$ctrl.allowEdit" class="form-control editor" id="fileName">.js
+                    <hr class="hr col-md-10" />
+                </div>
+            </form>
 
-            <div ng-if="$ctrl.content && !$ctrl.allowEdit">
-                <pre>{{$ctrl.content}}</pre>
-                <button ng-click="$ctrl.allowEdit = true">Editar</button>
+            <div ng-if="$ctrl.content && !$ctrl.allowEdit">*/
+                <table class="table table-hover table-responsive-blob">
+                    <tbody>
+                        <tr ng-repeat="line in $ctrl.content track by $index">
+                            <th scope="row">{{$index}}</th>
+                            <td><textarea class="form-control" rows="1" ng-value="line"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button ng-click="$ctrl.allowEdit = true" class="btn btn-info">Edit</button>
             </div>
             <div ng-if="$ctrl.allowEdit">
                 <textarea class="form-control" ng-attr-rows="{{$ctrl.contentRows}}" ng-model="$ctrl.content"></textarea>
-                <button ng-click="$ctrl.save(branch)">Salvar</button>
+                <button ng-click="$ctrl.save(branch)" class="btn btn-success textarea">Save</button>
             </div>
         </div>
     </div>
 </div>
+<hr class="hr col-md-10" /> -->
+<section>
+
+    <textarea ui-codemirror="$ctrl.cmOption" ng-model="$ctrl.cmModel"></textarea> Mode : <select ng-model="mode" ng-options="m for m in modes"
+        ng-change="modeChanged()"></select>
+
+</section>

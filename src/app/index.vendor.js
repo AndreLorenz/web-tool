@@ -14,6 +14,7 @@ import "ng-storage";
 import "bootstrap";
 import "angular-bootstrap-grid-tree/src/tree-grid-directive";
 import "angucomplete-alt/angucomplete-alt";
+import "angular-ui-codemirror/src/ui-codemirror";
 // local scripts
 //import "../assets/js/...";
 

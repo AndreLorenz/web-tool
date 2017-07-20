@@ -11,7 +11,6 @@ import indexComponents from './index.components';
 import indexRoutes from './index.routes';
 import mainModule from './pages/main/main.module';
 
-
 const App = angular.module(
   "tasy-web-tool", [
     // plugins
@@ -25,6 +24,7 @@ const App = angular.module(
     "ngAria",
     "treeGrid",
     "angucomplete-alt",
+    "ui.codemirror",
 
     // core
     coreModule.name,

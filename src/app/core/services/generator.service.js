@@ -7,10 +7,13 @@ export class GeneratorService {
 		this.url = `http://10.125.2.54:8784`;
 	}
 
-	getGeneratorFiles() {
+	getGeneratorFiles(schematicsCode) {
 		const config = {
 			method: 'GET',
-			url: `${this.url}/generator`
+			url: `${this.url}/generator`,
+			params: {
+				schematicsCode
+			}
 		};
 		this.$http(config).then(res => {
 			this.$rootScope.$broadcast('getGeneratorFilesSuccess', res.data);

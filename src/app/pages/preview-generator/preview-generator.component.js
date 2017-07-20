@@ -8,14 +8,14 @@ class PreviewGeneratorController {
     this.$scope = $scope;
     this.generatorService = generatorService;
     this.initializer();
-    this.generatorService.getGeneratorFiles();
+    this.generatorService.getGeneratorFiles(4802);
     this.tree = [];
     this.structure = [];
   }
 
   initializer() {
     this.$scope.$on('getGeneratorFilesSuccess', (event, res) => {
-      this.loadFiles(res);
+      this.tree = res;
       console.log(this.tree);
     });
     this.$scope.$on('getGeneratorFilesError', (event, err) => {
@@ -23,13 +23,19 @@ class PreviewGeneratorController {
     });
   }
 
-  onClike(file) {
-    this.contentRows = file.content.split('\n').length;
-    this.content = file.content;
-    this.name = file.name.replace('.js', '');
-    this.oldName = this.name;
-    this.src = file.src;
-    this.uid = file.uid;
+
+
+  onClike(item) {
+    if (item.children.length > 0) {
+      item.expanded = !item.expanded;
+    } else {
+      this.contentRows = item.content.split('\n').length;
+      this.content = item.content.split('\n').map(item => item.toString());
+      this.name = item.name.replace('.js', '');
+      this.oldName = this.name;
+      this.src = item.src;
+      this.uid = item.uid;
+    }
   }
 
   save() {
@@ -51,37 +57,6 @@ class PreviewGeneratorController {
     });
   }
 
-  loadFiles(lines = []) {
-    lines.forEach(line => {
-      const lineFields = line.fileName.split(`\\`);
-      this.findFolder(lineFields, 0, line);
-    });
-  }
-
-
-  findFolder(lineFields, i, line, childrenPath = this.tree) {
-    if (lineFields.length === i) return;
-    var children = childrenPath.find((value) => value.name === lineFields[i]);
-    if (children) this.findFolder(lineFields, ++i, line, children.children);
-    else {
-      let index = 0;
-      if (lineFields.length - 1 === i) {
-        index = childrenPath.push({
-          name: lineFields[i],
-          content: line.file,
-          src: line.fileName,
-          children: []
-        });
-      } else {
-        index = childrenPath.push({
-          name: lineFields[i],
-          children: []
-        });
-      }
-      this.findFolder(lineFields, ++i, line, childrenPath[index - 1].children);
-    }
-
-  }
 
   commitStructure(tree) {
     if (!tree) return;

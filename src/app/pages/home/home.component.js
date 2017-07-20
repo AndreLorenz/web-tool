@@ -12,8 +12,8 @@ class HomeController {
         'uisref': 'generator'
       },
       {
-        'title': 'Generate Structure',
-        'description': 'Generate the Structure for tasy HTML5',
+        'title': 'View Reports for Groups',
+        'description': 'View Reports for Groups',
         'img': require('../../../assets/images/angular.png'),
         'uisref': 'generator'
       },
