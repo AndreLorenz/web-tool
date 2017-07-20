@@ -20,6 +20,7 @@
                 <button ng-if="$ctrl.content" ng-disabled="!$ctrl.editorOptions.readOnly" ng-click="$ctrl.editorOptions.readOnly = false"
                     class="btn btn-info textarea">Edit</button>
                 <button ng-if="$ctrl.content" ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.save(branch)" class="btn btn-success textarea">Save</button>
+                <button ng-if="$ctrl.content" ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.undoChanges()" class="btn btn-warning textarea">Undo Changes</button>
             </div>
         </div>
     </div>
