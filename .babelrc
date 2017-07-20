@@ -1,6 +1,7 @@
 {
 	"plugins": [
-		"angularjs-annotate"
+		"angularjs-annotate",
+		"transform-strict-mode"
 	],
     "presets": [
     	"stage-1",

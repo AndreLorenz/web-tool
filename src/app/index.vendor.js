@@ -12,8 +12,12 @@ import "angular-aria";
 import "jquery";
 import "ng-storage";
 import "bootstrap";
-import 'angular-bootstrap-grid-tree/src/tree-grid-directive';
-
+import "angular-bootstrap-grid-tree/src/tree-grid-directive";
+import "angucomplete-alt/angucomplete-alt";
+import "codemirror/lib/codemirror";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/mode/css/css";
+import "angular-ui-codemirror/src/ui-codemirror"
 // local scripts
 //import "../assets/js/...";
 

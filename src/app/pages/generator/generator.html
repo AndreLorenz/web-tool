@@ -1,0 +1,42 @@
+<hr class="hr col-md-10" />
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<form class="form-horizontal" ng-submit="$ctrl.createStructure($ctrl.config)" name="generateForm">
+				<h1>Tasy Schematics Structure Tools</h1>
+				<p>Hello {{$ctrl.user.name}} Create your function structure on GitHub.</p>
+				<hr class="hr col-md-10" />
+				<div class="col-sm-12">
+					<div class="control-group form-group form-group-no-border" ng-blur="$ctrl.validModule()">
+						<angucomplete-alt required id="ex1" placeholder="Module name:" pause="100" selected-object="$ctrl.config.selectedModule"
+						  local-data="$ctrl.modules" match-class="highlight" override-suggestions="true" local-search="$ctrl.moduleSearch" title-field="name"
+						  minlength="1" input-class="form-control form-control-small text-center" />
+					</div>
+				</div>
+				<div class="control-group form-group">
+					<div class="col-sm-12">
+						<div class="control-group form-group form-group-no-border">
+							<input type="nubmer" ng-model="$ctrl.config.code" class="form-control text-center" id="schematicsFunctionCode" placeholder="Schematics function code:"
+							  required autocomplete="off" ng-blur="$ctrl.getFunctionDetail(generateForm.$valid)">
+						</div>
+					</div>
+					<button type="submit" class="btn btn-info" ng-click="$ctrl.getFunctionDetail(generateForm.$valid)" ng-disabled="$ctrl.validModule() || !generateForm.$valid">{{$ctrl.labelPreview}}</button>
+					<button class="btn btn-info" ng-click="$ctrl.createModule()" ng-disabled="!$ctrl.validModule()">Create Module</button>
+				</div>
+				<hr class="hr col-md-10" />
+				<div class="control-group form-group" ng-show="$ctrl.previewStructure">
+					<h6>Function Informations</h6>
+					<p class="blockquote">
+						<small>Name: </small> {{$ctrl.config.functionDescription}}</br>
+						<small>Form: </small> {{$ctrl.config.functionForm}}</br>
+						<small>Code: </small> {{$ctrl.config.functionCode}}</br>
+						<small>Module: </small> {{$ctrl.config.functionModule}}</br>
+						<small>Schematics Code: </small> {{$ctrl.config.schematicsCode}}</br>
+					</p>
+					<button type="submit" class="btn btn-success" ng-click="$ctrl.createStructure($ctrl.config)" ng-disabled="!generateForm.$valid">Create Structure</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<hr class="hr col-md-10" />

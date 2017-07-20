@@ -1,0 +1,34 @@
+ <div class="col-sm-12">
+  <div class="control-group form-group form-group-no-border" ng-class="{'has-success' : $ctrl.github.password.length > 3, 'has-danger' : $ctrl.github.password.length <= 3}">
+    <input type="{{vm.type}}" ng-model="vm.model" class="form-control text-center" ng-class="{'has-success' : $ctrl.github.password.length > 3, 'has-danger' : $ctrl.github.password.length <= 3}"
+      id="{{vm.id}}" placeholder="{{vm.label}}" required ng-change="vm.change(vm.selected)" autocomplete="off" ng-focus="vm.focus = true"
+      ng-blur="vm.focusLost(vm.model)">
+  </div>
+</div>
+<div class="container" ng-show="vm.model.length >= 1 && vm.model.length < 9 && vm.focus">
+  <div class="list-group text-center">
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <span class="badge badge-info btn btn-info" ata-toggle="modal" data-target="#myModal">New {{vm.labelnew}}</span>
+        </div>
+      </div>
+    </div>
+    <button ng-repeat="item in vm.values | filter:vm.model" type="button" class="list-group-item list-group-item-action form-control text-center item selected"
+      ng-click="vm.click(item)" ng-selected="item == vm.model">{{item}}</button>
+  </div>
+</div> 
+<!-- <div class="dropdown">
+  <button type="button" label="Teste" class="btn dropdown-toggle" data-toggle="dropdown"></button>
+  <div class="dropdown-menu open" role="combobox" style="max-height: 596px; overflow: hidden; min-height: 18px;">
+    <div class="bs-searchbox"><input type="text" class="form-control" autocomplete="off" role="textbox" aria-label="Search"></div>
+    <ul class="dropdown-menu list-group" role="listbox" aria-expanded="true" style="max-height: 580px; overflow-y: auto; min-height: 2px;">
+      <li data-original-index="0" class="selected active">
+        <a tabindex="0" class="ng-binding ng-scope" data-tokens="TasyApp" role="option" aria-disabled="false" aria-selected="true">
+        <span class="text">TasyApp</span>
+      </a>
+      </li>
+    </ul>
+  </div>
+</div> -->

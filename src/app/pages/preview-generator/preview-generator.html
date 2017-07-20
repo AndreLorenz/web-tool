@@ -1,0 +1,27 @@
+<hr class="hr col-md-11" />
+<div class="col-md-11">
+    <div class="row">
+        <div class="col-md-4 ident-left">
+            <tree-grid on-click="$ctrl.onClike(branch)" tree-data="$ctrl.tree" expand-level="1" icon-leaf="indented tree-icon now-ui-icons design-2_html5"
+                icon-expand="indented tree-icon glyphicon fa icon-folder-close glyphicon-folder-close fa-folder-close" icon-collapse="indented tree-icon glyphicon fa icon-folder-open glyphicon-folder-open fa-folder-open"></tree-grid>
+        </div>
+        <div class="col-md-7 table-responsive">
+            <label ng-if="$ctrl.content">Patch:</label> {{$ctrl.src}}
+            <form class="form-inline" ng-if="$ctrl.content">
+                <div class="form-group">
+                    <label for="fileName">Filename:</label>
+                    <input type="text" ng-model="$ctrl.name" ng-disabled="!$ctrl.allowEdit" class="form-control editor" id="fileName">.js
+                    <hr class="hr col-md-11" />
+                </div>
+            </form>
+            <div class="code-mirror">
+                <ui-codemirror ng-if="$ctrl.content" ui-codemirror-opts="$ctrl.editorOptions" ng-model="$ctrl.content"></ui-codemirror>
+                <hr class="hr col-md-12" />
+                <button ng-if="$ctrl.content" ng-disabled="!$ctrl.editorOptions.readOnly" ng-click="$ctrl.editorOptions.readOnly = false"
+                    class="btn btn-info textarea">Edit</button>
+                <button ng-if="$ctrl.content" ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.save(branch)" class="btn btn-success textarea">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="hr col-md-11" />

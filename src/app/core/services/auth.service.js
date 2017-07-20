@@ -27,10 +27,11 @@ export class AuthService {
 	signin(data) {
 		return this.$http({
 			method: 'POST',
-			url: `http://localhost:8784/signin`,
+			url: `http://10.125.2.54:8784/signin`,
 			params: data
 		}).then(res => {
 			if (res.data.err) return console.log(res.data.err.message);
+			this.$rootScope.$broadcast("userLogged", res.data.user);
 			this.setToken(res.data.token);
 			this.setUser(res.data.user);
 		}).catch((err) => {

@@ -122,6 +122,7 @@ module.exports = function (_path) {
            jQuery: 'jquery',
            'window.jQuery': 'jquery',
            'window.jquery': 'jquery',
+           'window.CodeMirror': 'codemirror',
            Tether: 'tether',
            
            

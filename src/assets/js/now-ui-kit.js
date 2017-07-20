@@ -37,8 +37,8 @@ $(document).ready(function(){
         });
     });
 
-    $navbar = $('.navbar[color-on-scroll]');
-    scroll_distance = $navbar.attr('color-on-scroll') || 500;
+    const $navbar = $('.navbar[color-on-scroll]');
+    const scroll_distance = $navbar.attr('color-on-scroll') || 500;
 
     // Check if we have the class "navbar-color-on-scroll" then add the function to remove the class "navbar-transparent" so it will transform to a plain color.
 
@@ -107,7 +107,7 @@ $(window).resize(function(){
     }
 });
 
-nowuiKit = {
+const nowuiKit = {
     misc:{
         navbar_menu_visible: 0
     },
@@ -203,11 +203,11 @@ nowuiKit = {
 var big_image;
 
 // Javascript just for Demo purpose, remove it from your project
-nowuiKitDemo = {
+const nowuiKitDemo = {
     checkScrollForParallax: debounce(function(){
         var current_scroll = $(this).scrollTop();
 
-        oVal = ($(window).scrollTop() / 3);
+        const oVal = ($(window).scrollTop() / 3);
         big_image.css({
             'transform':'translate3d(0,' + oVal +'px,0)',
             '-webkit-transform':'translate3d(0,' + oVal +'px,0)',

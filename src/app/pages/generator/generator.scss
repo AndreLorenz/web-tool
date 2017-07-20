@@ -1,0 +1,41 @@
+.angucomplete-dropdown {
+  background-color: #FFF;
+  position: absolute;
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  left: 0px;
+  box-shadow: 0px 0px 5px rgba(8, 8, 8, 0.22);
+  border-radius: 20px !important;
+  padding: 3px;
+  top: 5px;
+  overflow: auto;
+  max-height: 250px !important;
+  align-items: center;
+  margin-top: 40px !important;
+  z-index: 5;
+}
+
+.angucomplete-selected-row {
+  background: linear-gradient(145deg, #74747c 0, #77adc6 60%, #3f6391 100%);
+  width: 100% !important;
+  border-radius: 10px;
+  opacity: 50px;
+}
+
+ ::-webkit-scrollbar-track {
+  background-color: #F4F4F4;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background: #F4F4F4;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dad7d7;
+  border-radius: 50px;
+}

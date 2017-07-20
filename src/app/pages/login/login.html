@@ -1,0 +1,33 @@
+<hr class="hr col-md-10" />
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <form class="form-horizontal" ng-submit="$ctrl.login($ctrl.github)" name="loginForm">
+        <img class="git-hub" src="../../../assets/images/github.svg" alt="User Photo">
+        <legend>Login</legend>
+        <hr class="hr col-md-10" />
+        <div class="col-sm-12">
+          <div class="control-group form-group form-group-no-border" ng-class="{'has-success' : $ctrl.github.username.length > 3, 'has-danger' : $ctrl.github.username.length <= 3}">
+            <input type="text" ng-model="$ctrl.github.username" class="form-control text-center" ng-class="{'has-success' : $ctrl.github.username.length > 3, 'has-danger' : $ctrl.github.username.length <= 3}"
+              id="username" placeholder="Email/UserName Git" required autocomplete="off">
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="control-group form-group form-group-no-border" ng-class="{'has-success' : $ctrl.github.password.length > 3, 'has-danger' : $ctrl.github.password.length <= 3}">
+            <input type="password" ng-model="$ctrl.github.password" class="form-control text-center" ng-class="{'has-success' : $ctrl.github.password.length > 3, 'has-danger' : $ctrl.github.password.length <= 3}"
+              id="password" placeholder="Password" required autocomplete="off">
+          </div>
+        </div>
+        <div class="checkbox">
+          <input id="checkbox1" type="checkbox" ng-model="$ctrl.github.remember">
+          <label for="checkbox1">
+            Remember me
+          </label>
+        </div>
+        <button type="button" ng-click="$ctrl.clear()" class="btn btn-warning waves-effect">Clear</button>
+        <button type="submit" ng-click="$ctrl.login($ctrl.github)" ng-disabled="!loginForm.$valid" class="btn btn-success waves-effect">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+<hr class="hr col-md-10" />

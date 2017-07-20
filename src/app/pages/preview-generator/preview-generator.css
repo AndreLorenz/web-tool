@@ -1,0 +1,26 @@
+.editor {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border: none !important;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  max-height: 750px;
+  padding-left: 90px !important;
+}
+
+.ident-left {
+  padding-left: 70px !important;
+}
+
+.code-mirror {
+  min-width: 700px !important;
+  min-height: 400px !important;
+  max-width: 95% !important;
+}
+
+.CodeMirror {
+  height: 570px !important;
+}
