@@ -3,47 +3,24 @@
   border: none !important;
 }
 
-.textarea {
-  margin-top: 10px !important;
-}
-
 .table-responsive {
   display: block;
   width: 100%;
   overflow-x: auto;
-  max-height: 500px;
+  max-height: 750px;
+  padding-left: 90px !important;
 }
 
-.table-responsive-blob {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  max-height: 300px;
-  border-color: transparent !important;
+.ident-left {
+  padding-left: 70px !important;
+}
+
+.code-mirror {
   min-width: 700px !important;
+  min-height: 400px !important;
+  max-width: 95% !important;
 }
 
-.form-control>textarea {
-  max-width: 100% !important;
-  width: 1000px!important;
-  padding: 10px 10px 0 0;
-  resize: none;
-  border: none;
-  line-height: 2;
-}
-
-.table-responsive-blob th,
-.table-responsive-blob td {
-  border-top: none !important;
-}
-
-.table-responsive-blob textarea {
-  max-width: 100%;
-  min-width: 600px;
-  padding: 0 0 0 0 !important;
-  resize: none;
-  border: none;
-  border-bottom: 0px !important;
-  border-radius: 0;
-  line-height: 1.5;
+.CodeMirror {
+  height: 570px !important;
 }

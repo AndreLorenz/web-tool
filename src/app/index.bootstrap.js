@@ -11,6 +11,7 @@ import "./index.vendor";
 import "./index.module";
 
 
+import 'codemirror/lib/codemirror.css';
 import "bootstrap/dist/css/bootstrap.css";
 import "../assets/styles/sass/now-ui-kit.scss";
 import 'angular-bootstrap-grid-tree/src/treeGrid.css';

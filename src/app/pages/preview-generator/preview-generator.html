@@ -1,45 +1,27 @@
-<!-- <hr class="hr col-md-10" />
-<div class="container">
+<hr class="hr col-md-11" />
+<div class="col-md-11">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 ident-left">
             <tree-grid on-click="$ctrl.onClike(branch)" tree-data="$ctrl.tree" expand-level="1" icon-leaf="indented tree-icon now-ui-icons design-2_html5"
                 icon-expand="indented tree-icon glyphicon fa icon-folder-close glyphicon-folder-close fa-folder-close" icon-collapse="indented tree-icon glyphicon fa icon-folder-open glyphicon-folder-open fa-folder-open"></tree-grid>
         </div>
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-5">
-            {{$ctrl.src}}
+        <div class="col-md-7 table-responsive">
+            <label ng-if="$ctrl.content">Patch:</label> {{$ctrl.src}}
             <form class="form-inline" ng-if="$ctrl.content">
                 <div class="form-group">
-                    <hr class="hr col-md-10" />
-                    <label for="fileName">Filename</label>
+                    <label for="fileName">Filename:</label>
                     <input type="text" ng-model="$ctrl.name" ng-disabled="!$ctrl.allowEdit" class="form-control editor" id="fileName">.js
-                    <hr class="hr col-md-10" />
+                    <hr class="hr col-md-11" />
                 </div>
             </form>
-
-            <div ng-if="$ctrl.content && !$ctrl.allowEdit">*/
-                <table class="table table-hover table-responsive-blob">
-                    <tbody>
-                        <tr ng-repeat="line in $ctrl.content track by $index">
-                            <th scope="row">{{$index}}</th>
-                            <td><textarea class="form-control" rows="1" ng-value="line"></textarea></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button ng-click="$ctrl.allowEdit = true" class="btn btn-info">Edit</button>
-            </div>
-            <div ng-if="$ctrl.allowEdit">
-                <textarea class="form-control" ng-attr-rows="{{$ctrl.contentRows}}" ng-model="$ctrl.content"></textarea>
-                <button ng-click="$ctrl.save(branch)" class="btn btn-success textarea">Save</button>
+            <div class="code-mirror">
+                <ui-codemirror ng-if="$ctrl.content" ui-codemirror-opts="$ctrl.editorOptions" ng-model="$ctrl.content"></ui-codemirror>
+                <hr class="hr col-md-12" />
+                <button ng-if="$ctrl.content" ng-disabled="!$ctrl.editorOptions.readOnly" ng-click="$ctrl.editorOptions.readOnly = false"
+                    class="btn btn-info textarea">Edit</button>
+                <button ng-if="$ctrl.content" ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.save(branch)" class="btn btn-success textarea">Save</button>
             </div>
         </div>
     </div>
 </div>
-<hr class="hr col-md-10" /> -->
-<section>
-
-    <textarea ui-codemirror="$ctrl.cmOption" ng-model="$ctrl.cmModel"></textarea> Mode : <select ng-model="mode" ng-options="m for m in modes"
-        ng-change="modeChanged()"></select>
-
-</section>
+<hr class="hr col-md-11" />

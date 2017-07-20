@@ -3,14 +3,22 @@ import template from './preview-generator.html';
 
 class PreviewGeneratorController {
 
-  constructor($scope, generatorService) {
+  constructor($rootScope, $scope, generatorService) {
     'ngInject';
     this.$scope = $scope;
+    this.$rootScope = $rootScope;
     this.generatorService = generatorService;
     this.initializer();
     this.generatorService.getGeneratorFiles(4802);
     this.tree = [];
     this.structure = [];
+    this.editorOptions = {
+      theme: 'twilight',
+      lineNumbers: true,
+      readOnly: true,
+      mode: "javascript",
+      htmlMode: true,
+    };
   }
 
   initializer() {
@@ -30,7 +38,7 @@ class PreviewGeneratorController {
       item.expanded = !item.expanded;
     } else {
       this.contentRows = item.content.split('\n').length;
-      this.content = item.content.split('\n').map(item => item.toString());
+      this.content = item.content;
       this.name = item.name.replace('.js', '');
       this.oldName = this.name;
       this.src = item.src;
@@ -39,7 +47,7 @@ class PreviewGeneratorController {
   }
 
   save() {
-    this.allowEdit = false;
+    this.editorOptions.readOnly = true;
     this.saveFile(this.tree);
   }
 

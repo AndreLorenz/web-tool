@@ -32,6 +32,12 @@ function routeConfig($stateProvider) {
     .state('preview-generator', {
       url: '/preview-generator',
       component: 'previewGeneratorComponent',
+
+      onEnter: ($rootScope, authService, $state) => {
+        $rootScope.$on('$viewContentLoaded', function (event) {
+
+        });
+      }
     });
 
 }

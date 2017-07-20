@@ -18,10 +18,10 @@ class HomeController {
         'uisref': 'generator'
       },
       {
-        'title': 'Generate Structure',
-        'description': 'Generate the Structure for tasy HTML5',
+        'title': 'Preview Structure',
+        'description': 'Preview Structure',
         'img': require('../../../assets/images/yeoman.png'),
-        'uisref': 'generator'
+        'uisref': 'preview-generator'
       },
       {
         'title': 'Generate Structure',
