@@ -17,9 +17,10 @@
             <div class="code-mirror">
                 <ui-codemirror ng-if="$ctrl.content" ui-codemirror-opts="$ctrl.editorOptions" ng-model="$ctrl.content"></ui-codemirror>
                 <hr class="hr col-md-12" />
-                <button ng-if="$ctrl.content" ng-disabled="!$ctrl.editorOptions.readOnly" ng-click="$ctrl.edit()" class="btn btn-info textarea">Edit</button>
-                <button ng-if="$ctrl.content" ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.save(branch)" class="btn btn-success textarea">Save</button>
-                <button ng-if="$ctrl.content" ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.undoChanges()" class="btn btn-warning textarea">Undo Changes</button>
+                <button ng-if="$ctrl.content" ng-disabled="!$ctrl.editorOptions.readOnly" ng-click="$ctrl.edit()" class="btn btn-info btn-simple">Edit</button>
+                <button ng-if="$ctrl.content" ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.save(branch)" class="btn btn-success btn-simple">Save</button>
+                <button ng-if="$ctrl.content" ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.undoChanges()" class="btn btn-warning btn-simple">Undo Changes</button>
+                <button class="btn btn-success" ng-if="$ctrl.content" ng-click="$ctrl.undoChanges()" ng-disabled="!$ctrl.editorOptions.readOnly">Commit</button>
             </div>
         </div>
     </div>

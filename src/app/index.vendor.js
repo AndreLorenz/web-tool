@@ -18,6 +18,7 @@ import "codemirror/lib/codemirror";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/mode/css/css";
 import "angular-ui-codemirror/src/ui-codemirror"
+import 'ng-dialog/js/ngDialog.min.js';
 // local scripts
 //import "../assets/js/...";
 

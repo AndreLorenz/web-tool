@@ -8,7 +8,7 @@
 				<hr class="hr col-md-10" />
 				<div class="col-sm-12">
 					<div class="control-group form-group form-group-no-border" ng-blur="$ctrl.validModule()">
-						<angucomplete-alt required id="ex1" placeholder="Module name:" pause="100" selected-object="$ctrl.config.selectedModule"
+						<angucomplete-alt ng-required="true" id="ex1" placeholder="Module name:" pause="100" selected-object="$ctrl.config.selectedModule"
 						  local-data="$ctrl.modules" match-class="highlight" override-suggestions="true" local-search="$ctrl.moduleSearch" title-field="name"
 						  minlength="1" input-class="form-control form-control-small text-center" />
 					</div>
@@ -16,12 +16,13 @@
 				<div class="control-group form-group">
 					<div class="col-sm-12">
 						<div class="control-group form-group form-group-no-border">
-							<input type="nubmer" ng-model="$ctrl.config.code" class="form-control text-center" id="schematicsFunctionCode" placeholder="Schematics function code:"
-							  required autocomplete="off" ng-blur="$ctrl.getFunctionDetail(generateForm.$valid)">
+							<input type="number" ng-model="$ctrl.config.code" class="form-control text-center" id="schematicsFunctionCode" placeholder="Schematics function code:"
+							  ng-required="true" autocomplete="off" ng-blur="$ctrl.getFunctionDetail(generateForm.$valid)">
 						</div>
 					</div>
 					<button type="submit" class="btn btn-info" ng-click="$ctrl.getFunctionDetail(generateForm.$valid)" ng-disabled="$ctrl.validModule() || !generateForm.$valid">{{$ctrl.labelPreview}}</button>
-					<button class="btn btn-info" ng-click="$ctrl.createModule()" ng-disabled="!$ctrl.validModule()">Create Module</button>
+					<button type="button" class="btn btn-info" ng-click="$ctrl.createModule()" ng-disabled="!$ctrl.validModule()">Create Module</button>
+					<modal title="Cleiton" description="bundao"></modal>
 				</div>
 				<hr class="hr col-md-10" />
 				<div class="control-group form-group" ng-show="$ctrl.previewStructure">
