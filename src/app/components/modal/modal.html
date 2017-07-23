@@ -6,7 +6,7 @@
   <span class="badge badge-warning">1 Editado</span>
   <span class="badge badge-danger">4 Error</span>
 </div>
-<div class="card-block">
+<div class="card-block ngmodal">
   <div ng-if="$ctrl.files" class="typography-line" ng-repeat="desc in $ctrl.files">
     <i class="now-ui-icons arrows-1_minimal-right minimal"></i>
     <i ng-class="{'ui-1_check text-success' : desc.type == 'success', 'ui-1_simple-remove text-danger' : desc.type == 'error', 'travel_info text-warning' : desc.type == 'warning'}"

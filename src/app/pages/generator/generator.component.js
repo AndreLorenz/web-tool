@@ -61,7 +61,7 @@ class GeneratorController {
         message: 'Arquivo já existe, impossível sobreescrever!',
         type: 'error'
       },
-    ], 800);
+    ]);
   }
 
   createStructure(config) {
