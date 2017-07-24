@@ -56,4 +56,16 @@ export class GeneratorService {
 		return this.$http(config).then(res => res.data).catch(err => err.data);
 	}
 
+
+	createBranch(branchName) {
+		const config = {
+			method: 'POST',
+			url: `${this.url}/create-branch`,
+			params: {
+				branchName
+			}
+		};
+		return this.$http(config).then(res => res.data).catch(err => err.data);
+	}
+
 }

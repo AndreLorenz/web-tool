@@ -33,6 +33,10 @@ class GeneratorController {
 
   }
 
+  createBranch(config) {
+    return this.generatorService.createBranch(config.branchName).then(result => console.log(result)).catch(result => console.log(result));
+  }
+
   logout() {
     this.authService.logout();
     this.$state.transitionTo('login');
