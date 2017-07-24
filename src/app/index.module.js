@@ -25,6 +25,7 @@ const App = angular.module(
     "treeGrid",
     "angucomplete-alt",
     "ui.codemirror",
+    "ngDialog",
     // core
     coreModule.name,
 

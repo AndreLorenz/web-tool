@@ -3,12 +3,13 @@ import template from './generator.html';
 
 class GeneratorController {
 
-  constructor($scope, $state, generatorService, authService) {
+  constructor($scope, $state, generatorService, authService, modalService) {
     'ngInject';
     this.$scope = $scope;
     this.$state = $state;
     this.generatorService = generatorService;
     this.authService = authService;
+    this.modalService = modalService;
     this.config = {
       webservice: true
     };
@@ -29,8 +30,44 @@ class GeneratorController {
     this.getModules();
   }
 
-  createStructure(config) {
+  createModule() {
+    this.modalService.open("Cleiton fodão", [{
+        file: 'protocoloWDBP.js',
+        message: 'Arquivo gerado com sucesso!',
+        type: 'success'
+      },
+      {
+        file: 'particularWPUMC.js',
+        message: 'Arquivo com conflito!',
+        type: 'warning'
+      },
+      {
+        file: 'protocoloItemWDBP.js',
+        message: 'Arquivo já existe, impossível sobreescrever!',
+        type: 'error'
+      },
+      {
+        file: 'protocoloItemWDBP.js',
+        message: 'Arquivo já existe, impossível sobreescrever!',
+        type: 'error'
+      },
+      {
+        file: 'protocoloItemWDBP.js',
+        message: 'Arquivo já existe, impossível sobreescrever!',
+        type: 'error'
+      },
+      {
+        file: 'protocoloItemWDBP.js',
+        message: 'Arquivo já existe, impossível sobreescrever!',
+        type: 'error'
+      },
+    ]);
+  }
 
+  createStructure(config) {
+    this.$state.go('preview-generator', {
+      config
+    });
   }
 
   createBranch(config) {

@@ -1,0 +1,24 @@
+<div class="container">
+  <p class="category">{{$ctrl.title}}</p>
+</div>
+<div class="container">
+  <span class="badge badge-success">1 Gerado</span>
+  <span class="badge badge-warning">1 Editado</span>
+  <span class="badge badge-danger">4 Error</span>
+</div>
+<div class="card-block ngmodal">
+  <div ng-if="$ctrl.files" class="typography-line" ng-repeat="desc in $ctrl.files">
+    <i class="now-ui-icons arrows-1_minimal-right minimal"></i>
+    <i ng-class="{'ui-1_check text-success' : desc.type == 'success', 'ui-1_simple-remove text-danger' : desc.type == 'error', 'travel_info text-warning' : desc.type == 'warning'}"
+      class="now-ui-icons"></i>
+    <span> {{desc.file}}</span>
+    <!-- <p ng-class="{'text-success' : desc.type == 'success', 'text-danger' : desc.type == 'error', 'text-warning' : desc.type == 'warning'}"
+      class="message">
+      {{desc.message}} <i ng-class="{'ui-1_check text-success' : desc.type == 'success', 'ui-1_simple-remove text-danger' : desc.type == 'error', 'travel_info text-warning' : desc.type == 'warning'}"
+        class="now-ui-icons"></i>
+    </p> -->
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-warning btn-simple" ng-click="$ctrl.closeDialog()">Close</button>
+</div>

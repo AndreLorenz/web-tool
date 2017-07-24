@@ -1,14 +1,19 @@
 'use strict';
 
-import footerModule from './components/footer/footer.module';
-import dropdownModule from './components/dropdown/dropdown.module';
-import inputListModule from './components/input-list/input-list.module';
-import navbarModule from './components/navbar/navbar.module';
+// pages
 import loginModule from './pages/login/login.module';
 import generatorModule from './pages/generator/generator.module';
 import previewGeneratorModule from './pages/preview-generator/preview-generator.module';
 import settingsModule from './pages/settings/settings.module';
 import homeModule from './pages/home/home.module';
+
+// components
+import navbarModule from './components/navbar/navbar.module';
+import footerModule from './components/footer/footer.module';
+import dropdownModule from './components/dropdown/dropdown.module';
+import inputListModule from './components/input-list/input-list.module';
+import modalModule from './components/modal/modal.module';
+
 
 export default angular.module('index.components', [
 	// pages
@@ -22,4 +27,5 @@ export default angular.module('index.components', [
 	footerModule.name,
 	dropdownModule.name,
 	inputListModule.name,
+	modalModule.name
 ]);

@@ -2,10 +2,12 @@
 
 import { GeneratorService } from './services/generator.service';
 import { AuthService } from './services/auth.service';
+import { ModalService } from './services/modal.service';
 
 const coreModule = angular.module('core-module', [])
 	.service('generatorService', GeneratorService)
-	.service('authService', AuthService);
+	.service('authService', AuthService)
+	.service('modalService', ModalService);
 
 
 export default coreModule;

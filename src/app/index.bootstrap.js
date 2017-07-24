@@ -17,6 +17,9 @@ import "../assets/styles/sass/now-ui-kit.scss";
 import 'angular-bootstrap-grid-tree/src/treeGrid.css';
 import "../assets/styles/sass/index.scss";
 import "angucomplete-alt/angucomplete-alt.css";
+import 'ng-dialog/css/ngDialog.min.css';
+import 'ng-dialog/css/ngDialog-theme-default.min.css';
+import 'ng-dialog/css/ngDialog-theme-plain.min.css';
 
 angular.element(document).ready(() => {
   angular.bootstrap(document, ['tasy-web-tool'], {

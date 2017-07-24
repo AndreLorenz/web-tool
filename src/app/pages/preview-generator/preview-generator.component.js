@@ -3,13 +3,13 @@ import template from './preview-generator.html';
 
 class PreviewGeneratorController {
 
-  constructor($rootScope, $scope, generatorService) {
+  constructor($rootScope, $scope, generatorService, $stateParams) {
     'ngInject';
     this.$scope = $scope;
     this.$rootScope = $rootScope;
     this.generatorService = generatorService;
+    this.$stateParams = $stateParams;
     this.initializer();
-    this.generatorService.getGeneratorFiles(4802);
     this.tree = [];
     this.structure = [];
     this.editorOptions = {
@@ -19,6 +19,7 @@ class PreviewGeneratorController {
       mode: "javascript",
       htmlMode: true,
     };
+    if (this.$stateParams) this.generatorService.getGeneratorFiles(this.$stateParams.config.schematicsCode);
   }
 
   initializer() {
@@ -31,7 +32,9 @@ class PreviewGeneratorController {
     });
   }
 
-
+  edit() {
+    this.editorOptions.readOnly = false;
+  }
 
   onClike(item) {
     if (item.children.length > 0) {
