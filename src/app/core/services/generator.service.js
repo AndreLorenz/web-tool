@@ -1,3 +1,5 @@
+import { saveAs } from "file-saver";
+
 export class GeneratorService {
 
 	constructor($rootScope, $http) {
@@ -56,6 +58,26 @@ export class GeneratorService {
 		return this.$http(config).then(res => res.data).catch(err => err.data);
 	}
 
+
+	commitStructure(config) {
+		const reqConfig = {
+			method: 'POST',
+			url: `${this.url}/commit-structure`,
+			params: {
+				config
+			},
+			responseType: 'blob'
+		};
+
+		return this.$http(reqConfig).then(res => {
+			var blob = new Blob([res.data], { type: res.headers('Content-Type') });
+			var fileName = res.headers('content-disposition');
+			saveAs(blob, fileName);
+		});
+
+
+
+	}
 
 	createBranch(branchName) {
 		const config = {

@@ -7,8 +7,12 @@
 }
 
 .message {
-  font-size: 13px;
-  margin-left: 30px;
+  font-size: 11px;
+}
+
+.font-src {
+  font-size: 12px;
+  margin-left: 10px;
 }
 
 .ngmodal {
@@ -22,4 +26,13 @@
 
 .ngdialog {
   overflow: hidden !important;
+}
+
+.typography-line{
+  display : flex;
+  align-items : center;
+}
+
+.subtitles{
+  font-size: 20px;
 }

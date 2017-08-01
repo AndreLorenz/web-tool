@@ -20,9 +20,8 @@
 							  ng-required="true" autocomplete="off" ng-blur="$ctrl.getFunctionDetail(generateForm.$valid)">
 						</div>
 					</div>
-					<button type="submit" class="btn btn-info" ng-click="$ctrl.getFunctionDetail(generateForm.$valid)" ng-disabled="$ctrl.validModule() || !generateForm.$valid">{{$ctrl.labelPreview}}</button>
-					<button type="button" class="btn btn-info" ng-click="$ctrl.createModule()" ng-disabled="!$ctrl.validModule()">Create Module</button>
-					<modal title="Cleiton" description="bundao"></modal>
+					<button type="button" class="btn btn-info" ng-click="$ctrl.getFunctionDetail(generateForm.$valid)" ng-disabled="$ctrl.validModule() || !generateForm.$valid">{{$ctrl.labelPreview}}</button>
+					<button type="button" class="btn btn-info" ng-click="$ctrl.createModule()" ng-if="false" ng-disabled="!$ctrl.validModule()">Create Module</button>
 				</div>
 				<hr class="hr col-md-10" />
 				<div class="control-group form-group" ng-show="$ctrl.previewStructure">

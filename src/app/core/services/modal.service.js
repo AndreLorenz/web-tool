@@ -10,7 +10,7 @@ export class ModalService {
     this.config = {};
   }
 
-  open(title, files, width) {
+  open(title, contents, width) {
     this.modal = this.ngDialog.open({
       template: modalComponent.templateUrl,
       controller: modalComponent.controller,
@@ -22,9 +22,44 @@ export class ModalService {
       closeByEscape: true,
       closeByDocument: true,
     });
-    this.$rootScope.$on('ngDialog.opened', function (e) {
-      e.targetScope.$$childTail.$ctrl.title = title;
-      e.targetScope.$$childTail.$ctrl.files = files;
+    this.$rootScope.$on('ngDialog.opened', (e, $dialog) => {
+      $dialog.scope().$ctrl.addContents(contents);
+    });
+  }
+
+  addContents(contents) {
+    this.$rootScope.$broadcast("modal.addContents", {
+      title: "Files2",
+      contents: [{
+        src: 'src/app/corCpaF8/items/shared/protocoloWDBP.js',
+        message: 'Arquivo gerado com sucesso!',
+        type: 'success'
+      },
+      {
+        src: 'src/app/corCpaF8/items/shared/particularWPUMC.js',
+        message: 'Arquivo com conflito!',
+        type: 'warning'
+      },
+      {
+        src: 'src/app/corCpaF8/items/shared/protocoloItemWDBP.js',
+        message: 'Arquivo já existe, impossível sobreescrever!',
+        type: 'error'
+      },
+      {
+        src: 'src/app/corCpaF8/items/shared/protocoloItemWDBP.js',
+        message: 'Arquivo já existe, impossível sobreescrever!',
+        type: 'error'
+      },
+      {
+        src: 'src/app/corCpaF8/items/shared/protocoloItemWDBP.js',
+        message: 'Arquivo já existe, impossível sobreescrever!',
+        type: 'error'
+      },
+      {
+        src: 'src/app/corCpaF8/items/shared/protocoloItemWDBP.js',
+        message: 'Arquivo já existe, impossível sobreescrever!',
+        type: 'error'
+      }]
     });
   }
 

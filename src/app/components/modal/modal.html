@@ -6,17 +6,17 @@
   <span class="badge badge-warning">1 Editado</span>
   <span class="badge badge-danger">4 Error</span>
 </div>
-<div class="card-block ngmodal">
-  <div ng-if="$ctrl.files" class="typography-line" ng-repeat="desc in $ctrl.files">
-    <i class="now-ui-icons arrows-1_minimal-right minimal"></i>
+<div class="card-block ngmodal" ng-repeat="res in $ctrl.contents">
+  <span class="subtitles">{{res.title}}</span>
+  <div ng-if="res.contents" class="typography-line" ng-repeat="desc in res.contents">
     <i ng-class="{'ui-1_check text-success' : desc.type == 'success', 'ui-1_simple-remove text-danger' : desc.type == 'error', 'travel_info text-warning' : desc.type == 'warning'}"
       class="now-ui-icons"></i>
-    <span> {{desc.file}}</span>
+    <span class="font-src"> {{desc.src}}</span>
     <!-- <p ng-class="{'text-success' : desc.type == 'success', 'text-danger' : desc.type == 'error', 'text-warning' : desc.type == 'warning'}"
       class="message">
       {{desc.message}} <i ng-class="{'ui-1_check text-success' : desc.type == 'success', 'ui-1_simple-remove text-danger' : desc.type == 'error', 'travel_info text-warning' : desc.type == 'warning'}"
-        class="now-ui-icons"></i>
-    </p> -->
+        class="now-ui-icons"></i> 
+    </p>  -->
   </div>
 </div>
 <div class="modal-footer">

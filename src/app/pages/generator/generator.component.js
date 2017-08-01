@@ -31,37 +31,44 @@ class GeneratorController {
   }
 
   createModule() {
-    this.modalService.open("Cleiton fodão", [{
-        file: 'protocoloWDBP.js',
+    this.modalService.open("Cleiton fodão", {
+      title: "Files",
+      contents: [{
+        src: 'src/app/corCpaF8/items/shared/protocoloWDBP.js',
         message: 'Arquivo gerado com sucesso!',
         type: 'success'
       },
       {
-        file: 'particularWPUMC.js',
+        src: 'src/app/corCpaF8/items/shared/particularWPUMC.js',
         message: 'Arquivo com conflito!',
         type: 'warning'
       },
       {
-        file: 'protocoloItemWDBP.js',
+        src: 'src/app/corCpaF8/items/shared/protocoloItemWDBP.js',
         message: 'Arquivo já existe, impossível sobreescrever!',
         type: 'error'
       },
       {
-        file: 'protocoloItemWDBP.js',
+        src: 'src/app/corCpaF8/items/shared/protocoloItemWDBP.js',
         message: 'Arquivo já existe, impossível sobreescrever!',
         type: 'error'
       },
       {
-        file: 'protocoloItemWDBP.js',
+        src: 'src/app/corCpaF8/items/shared/protocoloItemWDBP.js',
         message: 'Arquivo já existe, impossível sobreescrever!',
         type: 'error'
       },
       {
-        file: 'protocoloItemWDBP.js',
+        src: 'src/app/corCpaF8/items/shared/protocoloItemWDBP.js',
         message: 'Arquivo já existe, impossível sobreescrever!',
         type: 'error'
-      },
-    ]);
+      }]
+    }
+      , 800);
+
+    setTimeout(() => {
+      this.modalService.addContents({});
+    }, 10000)
   }
 
   createStructure(config) {

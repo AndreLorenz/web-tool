@@ -4,11 +4,8 @@
 }
 
 .card-img-top {
-  max-width: 200px;
-  max-height: 200px;
   align-items: center;
   text-align: center;
-  margin-left: 40px;
 }
 
 .hoverable:hover {
@@ -16,6 +13,6 @@
   transition: -webkit-box-shadow .45s;
   transition: box-shadow .45s;
   transition: box-shadow .45s, -webkit-box-shadow .45s;
-  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 84, 146, 1), 0 6px 20px 0 rgba(0, 0, 0, 0);
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 84, 146, 1);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 44, 146, 1), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 44, 146, .45);
 }

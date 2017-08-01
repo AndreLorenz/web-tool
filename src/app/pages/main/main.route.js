@@ -30,7 +30,7 @@ function routeConfig($stateProvider) {
       component: 'settingsComponent',
     })
     .state('preview-generator', {
-      url: '/preview-generator',
+      url: '/',
       component: 'previewGeneratorComponent',
       params: {
         config: undefined

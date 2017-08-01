@@ -8,25 +8,19 @@ class HomeController {
     this.cards = [{
         'title': 'Generate Structure',
         'description': 'Generate the Structure for tasy HTML5',
-        'img': require('../../../assets/images/github.svg'),
+        'img': require('../../../assets/images/generator.svg'),
         'uisref': 'generator'
       },
       {
         'title': 'View Reports for Groups',
         'description': 'View Reports for Groups',
-        'img': require('../../../assets/images/angular.png'),
+        'img': require('../../../assets/images/report.svg'),
         'uisref': 'generator'
       },
       {
-        'title': 'Preview Structure',
-        'description': 'Preview Structure',
-        'img': require('../../../assets/images/yeoman.png'),
-        'uisref': 'preview-generator'
-      },
-      {
-        'title': 'Generate Structure',
-        'description': 'Generate the Structure for tasy HTML5',
-        'img': require('../../../assets/images/me.jpg'),
+        'title': 'Delete collaborators',
+        'description': 'Delete collaborators',
+        'img': require('../../../assets/images/deleted.svg'),
         'uisref': 'generator'
       }
     ]

@@ -3,15 +3,15 @@ import template from './preview-generator.html';
 
 class PreviewGeneratorController {
 
-  constructor($rootScope, $scope, generatorService, $stateParams) {
+  constructor($rootScope, $scope, generatorService, $stateParams, modalService) {
     'ngInject';
     this.$scope = $scope;
     this.$rootScope = $rootScope;
     this.generatorService = generatorService;
     this.$stateParams = $stateParams;
+    this.modalService = modalService;
     this.initializer();
     this.tree = [];
-    this.structure = [];
     this.editorOptions = {
       theme: 'twilight',
       lineNumbers: true,
@@ -75,12 +75,24 @@ class PreviewGeneratorController {
     });
   }
 
+  commitStructure() {
+    const config = this.$stateParams.config || {};
+    config.structure = [];
+    this.generateStructure(this.tree, config.structure);
+    this.generatorService.commitStructure(config).then(result => {
+      var file = new Blob([result], { type: 'application/zip' });
+      saveAs(file, 'filename.zip');
+      // this.modalService.open("Cleiton fodão", result.status, 700);
+    });
+  }
 
-  commitStructure(tree) {
+
+  generateStructure(tree, structure) {
     if (!tree) return;
     tree.forEach(value => {
-      if (value.src) this.structure.push(value);
-      if (value.children) this.commitStructure(value.children);
+      if (value.src) structure.push(value);
+      if (value.children) this.generateStructure(value.children, structure);
+      else this.generateStructure(false, structure);
     });
   }
 }
