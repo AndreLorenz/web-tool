@@ -3,15 +3,23 @@ import template from './login.html';
 
 class LoginController {
 
-	constructor($state, authService) {
+	constructor($scope, $state, authService) {
 		'ngInject';
+		this.$scope = $scope;
 		this.$state = $state;
 		this.authService = authService;
 		this.github = {};
+		this.initializer();
+	}
+
+	initializer() {
+		this.$scope.$on("userLogged", (data) => {
+			this.$state.transitionTo('home')
+		});
 	}
 
 	login(user) {
-		return this.authService.signin(user).then(() => this.$state.transitionTo('home'));
+		return this.authService.signin(user);
 	}
 
 	clear() {

@@ -29,11 +29,14 @@ function navbarComponent($log) {
       this.username = res.name || 'User Name';
     });
 
-    this.logout = () => {
-      authService.logout();
+    $scope.$on("userLogout", (event, res) => {
       $state.transitionTo('login');
       this.userLogo = undefined;
       this.username = undefined;
+    });
+
+    this.logout = () => {
+      authService.logout();
     }
 
     this.settings = () => {
@@ -41,19 +44,19 @@ function navbarComponent($log) {
     }
 
     this.dropdown = [{
-        'value': 'Settings',
-        'icon': 'ui-1_settings-gear-63',
-        'type': 'menu',
-        'action': this.settings
-      }, {
-        'type': 'divider'
-      },
-      {
-        'value': 'Logout',
-        'icon': 'ui-1_lock-circle-open',
-        'type': 'menu',
-        'action': this.logout
-      }
+      'value': 'Settings',
+      'icon': 'ui-1_settings-gear-63',
+      'type': 'menu',
+      'action': this.settings
+    }, {
+      'type': 'divider'
+    },
+    {
+      'value': 'Logout',
+      'icon': 'ui-1_lock-circle-open',
+      'type': 'menu',
+      'action': this.logout
+    }
     ];
 
     this.navItem = [{

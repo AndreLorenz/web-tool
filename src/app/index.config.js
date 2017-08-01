@@ -24,7 +24,7 @@ function config($logProvider, $compileProvider, $httpProvider) {
 
       responseError: response => {
         const auth = $injector.get('authService');
-        if (response.status === 401 || response.status === 403) {
+        if ([401, 402, 404, 502].includes(response.status)) {
           $location.path('/login');
           auth.logout();
         }

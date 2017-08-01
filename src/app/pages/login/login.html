@@ -3,19 +3,20 @@
   <div class="row">
     <div class="span12">
       <form class="form-horizontal" ng-submit="$ctrl.login($ctrl.github)" name="loginForm">
-        <img class="git-hub" src="../../../assets/images/github.svg" alt="User Photo">
+        <img class="git-hub" src="../../../assets/images/github.svg" alt="Github">
+        <div class ="git-description"> <img  src="../../../assets/images/github_description.svg" > </div>
         <legend>Login</legend>
         <hr class="hr col-md-10" />
         <div class="col-sm-12">
           <div class="control-group form-group form-group-no-border" ng-class="{'has-success' : $ctrl.github.username.length > 3, 'has-danger' : $ctrl.github.username.length <= 3}">
             <input type="text" ng-model="$ctrl.github.username" class="form-control text-center" ng-class="{'has-success' : $ctrl.github.username.length > 3, 'has-danger' : $ctrl.github.username.length <= 3}"
-              id="username" placeholder="Email/UserName Git" required autocomplete="off">
+              id="username" placeholder="Github user" required autocomplete="off">
           </div>
         </div>
         <div class="col-sm-12">
           <div class="control-group form-group form-group-no-border" ng-class="{'has-success' : $ctrl.github.password.length > 3, 'has-danger' : $ctrl.github.password.length <= 3}">
             <input type="password" ng-model="$ctrl.github.password" class="form-control text-center" ng-class="{'has-success' : $ctrl.github.password.length > 3, 'has-danger' : $ctrl.github.password.length <= 3}"
-              id="password" placeholder="Password" required autocomplete="off">
+              id="password" placeholder="Github password" required autocomplete="off">
           </div>
         </div>
         <div class="checkbox">

@@ -42,6 +42,7 @@ export class AuthService {
 	logout() {
 		delete this.$localStorage.token;
 		delete this.$localStorage.currentUser;
+		this.$rootScope.$broadcast("userLogout", true);
 		this.$q.when();
 	}
 
