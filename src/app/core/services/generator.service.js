@@ -71,7 +71,7 @@ export class GeneratorService {
 
 		return this.$http(reqConfig).then(res => {
 			var blob = new Blob([res.data], { type: res.headers('Content-Type') });
-			var fileName = res.headers('content-disposition');
+			var fileName = `${config.functionForm}.zip`;
 			saveAs(blob, fileName);
 		});
 

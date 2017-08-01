@@ -79,11 +79,7 @@ class PreviewGeneratorController {
     const config = this.$stateParams.config || {};
     config.structure = [];
     this.generateStructure(this.tree, config.structure);
-    this.generatorService.commitStructure(config).then(result => {
-      var file = new Blob([result], { type: 'application/zip' });
-      saveAs(file, 'filename.zip');
-      // this.modalService.open("Cleiton fodão", result.status, 700);
-    });
+    this.generatorService.commitStructure(config);
   }
 
 
