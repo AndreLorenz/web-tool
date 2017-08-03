@@ -22,6 +22,12 @@ class HomeController {
         'description': 'Delete collaborators',
         'img': require('../../../assets/images/deleted.svg'),
         'uisref': 'generator'
+      },
+      {
+        'title': 'Service Order Management',
+        'description': 'Management of the Programmers Service Order',
+        'img': require('../../../assets/images/service_order.svg'),
+        'uisref': 'somanagement'
       }
     ]
   }

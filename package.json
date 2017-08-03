@@ -25,6 +25,7 @@
     "angular-sanitize": "^1.6.5",
     "angular-touch": "^1.6.5",
     "angular-ui-codemirror": "^0.3.0",
+    "angular-ui-grid": "^4.0.6",
     "angular-ui-router": "^1.0.3",
     "assets-webpack-plugin": "^3.4.0",
     "autoprefixer": "^6.5.0",

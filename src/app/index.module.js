@@ -26,6 +26,7 @@ const App = angular.module(
     "angucomplete-alt",
     "ui.codemirror",
     "ngDialog",
+    "ui.grid",
     // core
     coreModule.name,
 

@@ -20,6 +20,7 @@ import "angucomplete-alt/angucomplete-alt.css";
 import 'ng-dialog/css/ngDialog.min.css';
 import 'ng-dialog/css/ngDialog-theme-default.min.css';
 import 'ng-dialog/css/ngDialog-theme-plain.min.css';
+import "angular-ui-grid/ui-grid.min.css";
 
 angular.element(document).ready(() => {
   angular.bootstrap(document, ['tasy-web-tool'], {

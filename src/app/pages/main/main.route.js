@@ -38,6 +38,10 @@ function routeConfig($stateProvider) {
       onEnter: ($state, $stateParams) => {
         if (!$stateParams.config) return $state.transitionTo('generator');
       }
+    })
+    .state('somanagement', {
+      url: '/somanagement',
+      component: 'serviceOrderManagementController',
     });
 }
 
