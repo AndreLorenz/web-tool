@@ -11,7 +11,22 @@ class GridController {
 	}
 
 	initializer() {
-		this.myData = [
+		this.gridOptions = {};
+		this.gridOptions.columnDefs = [
+			{ name: 'serviceOrder', width: '*' },
+			{ name: 'description', width: '*' },
+			{ name: 'tab', width: '*' },
+			{ name: 'milestone', width: '*' },
+			{ name: 'function', width: '*' },
+			{ name: 'status', width: '*' },
+			{ name: 'expected', width: '*' },
+			{ name: 'activeStartedDate', width: '*' },
+			{ name: 'minutesExpected', width: '*' },
+			{ name: 'observation', width: '*' },
+			{ name: 'problem?', width: '*' }
+		];
+
+		this.gridOptions.data = [
 			{
 				"serviceOrder": "1405799",
 				"description": "#PRG 1 - 833728 - Gestão de consignados - Gestão de consignados",
@@ -19,10 +34,52 @@ class GridController {
 				"milestone": "Milestone 1",
 				"function": "ComSol_FS",
 				"status": "Concluída",
-				"expected ": "Sim",
-				"active started date": "07/06/2017",
-				"minutes expected": "238",
-				"minutes executed": "245",
+				"expected": "Sim",
+				"activeStartedDate": "07/06/2017",
+				"minutesExpected": "238",
+				"minutesExecuted": "245",
+				"observation": "Only a teste",
+				"problem?": "Não"
+			},
+			{
+				"serviceOrder": "1405799",
+				"description": "#PRG 1 - 833728 - Gestão de consignados - Gestão de consignados",
+				"tab": "Gestão de consignados",
+				"milestone": "Milestone 1",
+				"function": "ComSol_FS",
+				"status": "Concluída",
+				"expected": "Sim",
+				"activeStartedDate": "07/06/2017",
+				"minutesExpected": "238",
+				"minutesExecuted": "245",
+				"observation": "Only a teste",
+				"problem?": "Não"
+			},
+			{
+				"serviceOrder": "1405799",
+				"description": "#PRG 1 - 833728 - Gestão de consignados - Gestão de consignados",
+				"tab": "Gestão de consignados",
+				"milestone": "Milestone 1",
+				"function": "ComSol_FS",
+				"status": "Concluída",
+				"expected": "Sim",
+				"activeStartedDate": "07/06/2017",
+				"minutesExpected": "238",
+				"minutesExecuted": "245",
+				"observation": "Only a teste",
+				"problem?": "Não"
+			},
+			{
+				"serviceOrder": "1405799",
+				"description": "#PRG 1 - 833728 - Gestão de consignados - Gestão de consignados",
+				"tab": "Gestão de consignados",
+				"milestone": "Milestone 1",
+				"function": "ComSol_FS",
+				"status": "Concluída",
+				"expected": "Sim",
+				"activeStartedDate": "07/06/2017",
+				"minutesExpected": "238",
+				"minutesExecuted": "245",
 				"observation": "Only a teste",
 				"problem?": "Não"
 			}
