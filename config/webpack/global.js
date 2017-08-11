@@ -117,19 +117,13 @@ module.exports = function (_path) {
         }
       }),
        new webpack.ProvidePlugin({
-           
-           $: 'jquery',
-           jQuery: 'jquery',
-           'window.jQuery': 'jquery',
-           'window.jquery': 'jquery',
+           '$': 'jquery',
+           'jQuery': 'jquery',
+           'jquery': 'jquery',
            'window.CodeMirror': 'codemirror',
            Tether: 'tether',
-           
-           
            moment: 'moment',
            'window.moment': 'moment',
-           
-           
        }),
       new webpack.DefinePlugin({
         'NODE_ENV': JSON.stringify(NODE_ENV)

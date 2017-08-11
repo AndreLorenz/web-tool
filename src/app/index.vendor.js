@@ -2,6 +2,7 @@
 
 // node_modules
 import "angular";
+import "jquery";
 import "angular-ui-router";
 import "angular-animate";
 import "angular-cookies";
@@ -9,7 +10,6 @@ import "angular-touch";
 import "angular-sanitize";
 import "angular-messages";
 import "angular-aria";
-import "jquery";
 import "ng-storage";
 import "bootstrap";
 import "angular-bootstrap-grid-tree/src/tree-grid-directive";
