@@ -29,6 +29,10 @@ function routeConfig($stateProvider) {
       url: '/settings',
       component: 'settingsComponent',
     })
+    .state('report', {
+      url: '/report',
+      component: 'reportComponent',
+    })
     .state('preview-generator', {
       url: '/',
       component: 'previewGeneratorComponent',

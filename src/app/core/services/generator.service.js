@@ -59,12 +59,13 @@ export class GeneratorService {
 	}
 
 
-	commitStructure(config) {
+	downloadStructure(config) {
 		const reqConfig = {
 			method: 'POST',
-			url: `${this.url}/commit-structure`,
-			params: {
-				config
+			url: `${this.url}/download-structure`,
+			data: { config },
+			headers: {
+				'Content-type': 'application/json',
 			},
 			responseType: 'blob'
 		};

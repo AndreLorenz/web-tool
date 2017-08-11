@@ -1,0 +1,103 @@
+.description {
+  margin: 0;
+}
+
+.big-number {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.text-default {
+  color: #8c8c8c;
+}
+
+.small-number {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.description-function {
+  text-transform: uppercase;
+  font-size: 10px;
+  text-align: right;
+}
+
+.description-vev {
+  text-transform: uppercase;
+  font-size: 10px;
+  vertical-align: baseline;
+  text-align: center;
+
+}
+
+.description-pr {
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.progress-value {
+  font-weight: bold;
+  font-size: 15px !important;
+}
+
+.title {
+  text-align: center;
+  margin-top: 10px;
+  padding-bottom: 5px;
+}
+
+.card-teams::after{
+  background-image:url('./../../../assets/images/angular.png') ;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+}
+
+.container-groups {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+.group-body {
+  flex-grow: 1;
+  width: 33%;
+  padding-right: 10px; 
+  padding-left: 10px; 
+  margin-bottom: 18px;
+  border-left: 1px solid #e5e5e5;
+}
+
+.group-body:nth-child(3n+1) {
+  border-left:none;
+}
+
+@media (min-width: 2100px){
+  .group-body {
+    width: 0%;
+  padding-right: 10px; 
+  padding-left: 10px; 
+  margin-bottom: 18px;
+  border-left: 1px solid #e5e5e5;
+}
+}
+
+.hr-color{
+    border: none;
+    height: 50px;
+    margin-top: 0;
+    box-shadow: 0 20px 20px -20px #333;
+    margin: -30px auto 10px;
+}
+
+.vev-detail{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+
+}
+

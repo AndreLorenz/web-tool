@@ -87,7 +87,7 @@ class GeneratorController {
   }
 
   getFunctionDetail() {
-    if (this.config.code && this.config.selectedModule && (this.config.selectedModule.title || this.config.selectedModule.originalObject)) {
+    // if (this.config.code && this.config.selectedModule && (this.config.selectedModule.title || this.config.selectedModule.originalObject)) {
       this.generatorService.getFunctionDetail(this.config.code).then(response => {
         this.config = {
           ...this.config,
@@ -97,14 +97,14 @@ class GeneratorController {
         this.config.functionModule = this.config.selectedModule.title || this.config.selectedModule.originalObject;
       });
       this.previewStructure = true;
-    }
+    // }
   }
 
   validModule() {
-    if (this.config.selectedModule) {
-      return !this.modules.filter(item => item.name == this.config.selectedModule.originalObject || item.name == this.config.selectedModule.originalObject.name).length > 0;
-    }
-    return true;
+    // if (this.config.selectedModule) {
+    //   return !this.modules.filter(item => item.name == this.config.selectedModule.originalObject || item.name == this.config.selectedModule.originalObject.name).length > 0;
+    // }
+    return false;
   }
 
   moduleSearch(str, array) {

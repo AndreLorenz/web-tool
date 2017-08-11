@@ -15,7 +15,7 @@ class HomeController {
         'title': 'View Reports for Groups',
         'description': 'View Reports for Groups',
         'img': require('../../../assets/images/report.svg'),
-        'uisref': 'generator'
+        'uisref': 'report'
       },
       {
         'title': 'Delete collaborators',

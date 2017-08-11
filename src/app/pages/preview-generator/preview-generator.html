@@ -1,28 +1,42 @@
-<hr class="hr col-md-11" />
-<div class="col-md-11">
+<div class="container-fluid max-relative">
     <div class="row">
-        <div class="col-md-4 ident-left">
-            <tree-grid on-click="$ctrl.onClike(branch)" tree-data="$ctrl.tree" expand-level="1" icon-leaf="indented tree-icon now-ui-icons design-2_html5"
-                icon-expand="indented tree-icon glyphicon fa icon-folder-close glyphicon-folder-close fa-folder-close" icon-collapse="indented tree-icon glyphicon fa icon-folder-open glyphicon-folder-open fa-folder-open"></tree-grid>
-        </div>
-        <div class="col-md-7 table-responsive">
-            <label ng-if="$ctrl.content">Patch:</label> {{$ctrl.src}}
-            <form class="form-inline" ng-if="$ctrl.content">
-                <div class="form-group">
-                    <label for="fileName">Filename:</label>
-                    <input type="text" ng-model="$ctrl.name" ng-disabled="!$ctrl.allowEdit" class="form-control editor" id="fileName">.js
-                    <hr class="hr col-md-11" />
+        <div class="col-md-12">
+            <hr class="hr" width="100%"/>
+            <div class="row" ng-if="$ctrl.hasTree">
+                <div class="col-md-4">
+                    <tree-grid on-click="$ctrl.onClike(branch)" tree-data="$ctrl.tree" expand-level="1" icon-leaf="indented tree-icon now-ui-icons design-2_html5"
+                        icon-expand="indented tree-icon glyphicon fa icon-folder-close glyphicon-folder-close fa-folder-close"
+                        icon-collapse="indented tree-icon glyphicon fa icon-folder-open glyphicon-folder-open fa-folder-open"></tree-grid>
                 </div>
-            </form>
-            <div class="code-mirror">
-                <ui-codemirror ng-if="$ctrl.content" ui-codemirror-opts="$ctrl.editorOptions" ng-model="$ctrl.content"></ui-codemirror>
-                <hr class="hr col-md-12" />
-                <button ng-if="$ctrl.content" ng-disabled="!$ctrl.editorOptions.readOnly" ng-click="$ctrl.edit()" class="btn btn-info btn-simple">Edit</button>
-                <button ng-if="$ctrl.content" ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.save(branch)" class="btn btn-success btn-simple">Save</button>
-                <button ng-if="$ctrl.content" ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.undoChanges()" class="btn btn-warning btn-simple">Undo Changes</button>
-                <button class="btn btn-success" ng-if="$ctrl.content" ng-click="$ctrl.commitStructure()" ng-disabled="!$ctrl.editorOptions.readOnly">Commit</button>
+                <div class="col-md-7 table-responsive" ng-if="$ctrl.content">
+                    <label>Patch:</label> {{$ctrl.src}}
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="fileName">Filename:</label>
+                            <input type="text" ng-model="$ctrl.name" ng-disabled="!$ctrl.allowEdit" class="form-control editor" id="fileName">.js
+                            <hr class="hr" width="100%"/>
+                        </div>
+                    </form>
+                    <div class="code-mirror">
+                        <ui-codemirror ui-codemirror-opts="$ctrl.editorOptions" ng-model="$ctrl.content"></ui-codemirror>
+                        <hr class="hr" width="100%"/>
+                        <button ng-disabled="!$ctrl.editorOptions.readOnly" ng-click="$ctrl.edit()" class="btn btn-info btn-simple">Edit</button>
+                        <button ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.save(branch)" class="btn btn-success btn-simple">Save</button>
+                        <button ng-disabled="$ctrl.editorOptions.readOnly" ng-click="$ctrl.undoChanges()" class="btn btn-warning btn-simple">Undo Changes</button>
+                        <button class="btn btn-success" ng-click="$ctrl.downloadStructure()" ng-disabled="!$ctrl.editorOptions.readOnly">Download Structure</button>
+                    </div>
+                </div>
+
+                <div class="col-md-7 vcenter text-center" ng-if="!$ctrl.content">
+                    <button class="btn btn-success btn-lg" ng-click="$ctrl.downloadStructure()">Download Structure</button>
+                </div>
             </div>
+            <div class="row" ng-if="!$ctrl.hasTree">
+                <div class="col-md-12">
+                    <loader message="Your function is being generated, please wait."></loader>
+                </div>
+            </div>
+            <hr class="hr" width="100%"/>
         </div>
     </div>
 </div>
-<hr class="hr col-md-11" />

@@ -25,7 +25,7 @@ class PreviewGeneratorController {
   initializer() {
     this.$scope.$on('getGeneratorFilesSuccess', (event, res) => {
       this.tree = res;
-      console.log(this.tree);
+      this.hasTree = true;
     });
     this.$scope.$on('getGeneratorFilesError', (event, err) => {
       console.log(err);
@@ -75,11 +75,11 @@ class PreviewGeneratorController {
     });
   }
 
-  commitStructure() {
+  downloadStructure() {
     const config = this.$stateParams.config || {};
     config.structure = [];
     this.generateStructure(this.tree, config.structure);
-    this.generatorService.commitStructure(config);
+    this.generatorService.downloadStructure(config);
   }
 
 

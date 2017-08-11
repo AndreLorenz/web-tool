@@ -8,7 +8,15 @@
   width: 100%;
   overflow-x: auto;
   max-height: 750px;
-  padding-left: 90px !important;
+}
+
+.vcenter {
+    position: relative;
+     transform: translateY(40%); 
+}
+
+.max-relative{
+  max-width: 90%;
 }
 
 .ident-left {
