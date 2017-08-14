@@ -3,14 +3,15 @@ import template from './report.html';
 
 class ReportController {
 
-	constructor($scope, $state, reportService) {
+	constructor($scope, $state, reportService, $interval) {
 		'ngInject';
 		this.$scope = $scope;
 		this.$state = $state;
 		this.reportService = reportService;
+		this.$interval = $interval;
 		this.groups = [];
+		this.isRefresh = false;
 		this.initializer();
-		this.reportService.getTodoReport();
 	}
 
 	initializer() {
@@ -23,9 +24,23 @@ class ReportController {
 		});
 	}
 
+	autoRefresh() {
+		if (this.isRefresh) {
+			this.refresh = this.$interval(() => {
+				this.hasReport = false;
+				this.reportService.getTodoReport();
+			}, 60000);
+		} else {
+			if (this.refresh) {
+				this.$interval.cancel(this.refresh);
+				this.refresh = undefined;
+			}
+		}
+	}
+
 }
 
 export default {
-	templateUrl: template,
+	template: template,
 	controller: ReportController
 };

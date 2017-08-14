@@ -17,7 +17,6 @@ class PreviewGeneratorController {
       lineNumbers: true,
       readOnly: true,
       mode: "javascript",
-      htmlMode: true,
     };
     if (this.$stateParams) this.generatorService.getGeneratorFiles(this.$stateParams.config.schematicsCode);
   }
@@ -43,7 +42,8 @@ class PreviewGeneratorController {
       this.contentRows = item.content.split('\n').length;
       this.content = item.content;
       this.oldContent = item.content;
-      this.name = item.name.replace('.js', '');
+      this.name = item.name.replace(`.${item.name.split('.').pop()}`, '');
+      this.extension = item.name.split('.').pop();
       this.oldName = this.name;
       this.src = item.src;
       this.uid = item.uid;
@@ -66,7 +66,7 @@ class PreviewGeneratorController {
       if (value.uid === this.uid) {
         value.content = this.content;
         if (value.name != this.oldName) {
-          value.name = `${this.name}.js`;
+          value.name = `${this.name}.${this.extension}`;
           value.src = value.src.replace(this.oldName, this.name);
         }
         return;
@@ -94,6 +94,6 @@ class PreviewGeneratorController {
 }
 
 export default {
-  templateUrl: template,
+  template: template,
   controller: PreviewGeneratorController
 };

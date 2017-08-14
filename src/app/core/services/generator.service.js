@@ -2,17 +2,17 @@ import { saveAs } from "file-saver";
 
 export class GeneratorService {
 
-	constructor($rootScope, $http) {
+	constructor($rootScope, $http, serviceConfig) {
 		'ngInject';
 		this.$rootScope = $rootScope;
 		this.$http = $http;
-		this.url = `http://10.125.2.54:8784`;
+		this.serviceConfig = serviceConfig;
 	}
 
 	getGeneratorFiles(schematicsCode) {
 		const config = {
 			method: 'GET',
-			url: `${this.url}/generator`,
+			url: `${this.serviceConfig.BACKEND_URL}/generator`,
 			params: {
 				schematicsCode
 			}
@@ -27,7 +27,7 @@ export class GeneratorService {
 	getUser() {
 		const config = {
 			method: 'GET',
-			url: `${this.url}/user`
+			url: `${this.serviceConfig.BACKEND_URL}/user`
 		};
 		this.$http(config).then(res => {
 			this.$rootScope.$broadcast('getUserSuccess', res.data);
@@ -39,7 +39,7 @@ export class GeneratorService {
 	getFunctionDetail(schematicsCode) {
 		const config = {
 			method: 'GET',
-			url: `${this.url}/function-detail`,
+			url: `${this.serviceConfig.BACKEND_URL}/function-detail`,
 			params: {
 				'schematicsCode': schematicsCode
 			}
@@ -50,7 +50,7 @@ export class GeneratorService {
 	getModules(schematicsCode) {
 		const config = {
 			method: 'GET',
-			url: `${this.url}/modules`,
+			url: `${this.serviceConfig.BACKEND_URL}/modules`,
 			params: {
 				'schematicsCode': schematicsCode
 			}
@@ -62,7 +62,7 @@ export class GeneratorService {
 	downloadStructure(config) {
 		const reqConfig = {
 			method: 'POST',
-			url: `${this.url}/download-structure`,
+			url: `${this.serviceConfig.BACKEND_URL}/download-structure`,
 			data: { config },
 			headers: {
 				'Content-type': 'application/json',
@@ -83,7 +83,7 @@ export class GeneratorService {
 	createBranch(branchName) {
 		const config = {
 			method: 'POST',
-			url: `${this.url}/create-branch`,
+			url: `${this.serviceConfig.BACKEND_URL}/create-branch`,
 			params: {
 				branchName
 			}

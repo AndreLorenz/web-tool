@@ -9,6 +9,6 @@ class SettingsController {
 }
 
 export default {
-	templateUrl: template,
+	template: template,
 	controller: SettingsController
 };

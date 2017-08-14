@@ -12,7 +12,7 @@ export class ModalService {
 
   open(title, contents, width) {
     this.modal = this.ngDialog.open({
-      template: modalComponent.templateUrl,
+      template: modalComponent.template,
       controller: modalComponent.controller,
       controllerAs: '$ctrl',
       overlay: true,

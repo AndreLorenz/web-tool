@@ -28,6 +28,6 @@ class HomeController {
 }
 
 export default {
-  templateUrl: template,
+  template: template,
   controller: HomeController
 };

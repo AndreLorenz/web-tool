@@ -32,6 +32,9 @@ function routeConfig($stateProvider) {
     .state('report', {
       url: '/report',
       component: 'reportComponent',
+      onEnter: (reportService) => {
+        reportService.getTodoReport();
+      }
     })
     .state('preview-generator', {
       url: '/',

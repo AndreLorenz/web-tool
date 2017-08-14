@@ -7,7 +7,7 @@ function navbarComponent($log) {
 
   var directive = {
     restrict: 'E',
-    templateUrl: navbarTpl,
+    template: navbarTpl,
     controller: NavBarController,
     controllerAs: 'vm',
     scope: true,

@@ -7,7 +7,7 @@ function loaderComponent($log) {
 
   var directive = {
     restrict: 'E',
-    templateUrl: loaderTpl,
+    template: loaderTpl,
     controller: LoaderController,
     controllerAs: 'vm',
     scope: true,

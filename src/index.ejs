@@ -1,0 +1,26 @@
+<!-- VERSION <%= htmlWebpackPlugin.options.version %> -->
+<html>
+
+<head>
+	<base href="<%= htmlWebpackPlugin.options.baseUrl %>">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA Compatible" content="IE=edge">
+	<title>
+		<%= htmlWebpackPlugin.options.title %>
+	</title>
+	<meta name="<%= htmlWebpackPlugin.options.name %>" version="<%= htmlWebpackPlugin.options.version %>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="http://codemirror.net/lib/codemirror.css" />
+	<script type="text/javascript" src="http://codemirror.net/mode/javascript/javascript.js"></script>
+</head>
+
+<body>
+	<navbar></navbar>
+	<div class="main" ui-view>
+	</div>
+	<footer></footer>
+</body>
+
+</html>

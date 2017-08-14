@@ -7,7 +7,7 @@ function inputListComponent($log) {
 
   var directive = {
     restrict: 'E',
-    templateUrl: inputListTpl,
+    template: inputListTpl,
     controller: InputListController,
     controllerAs: 'vm',
     scope: true,

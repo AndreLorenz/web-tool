@@ -1,18 +1,21 @@
 export class ReportService {
 
-	constructor($rootScope, $http) {
+	constructor($rootScope, $http, serviceConfig) {
 		'ngInject';
 		this.$rootScope = $rootScope;
 		this.$http = $http;
-		this.url = `http://10.125.2.54:8784`;
+		this.serviceConfig = serviceConfig;
 	}
 
 	getTodoReport() {
 		const config = {
 			method: 'GET',
-			url: `${this.url}/todo-report`
+			url: `${this.serviceConfig.BACKEND_URL}/todo-report`
 		};
-		this.$http(config).then(res => this.$rootScope.$broadcast('getTodoReportSuccess', res.data))
+		return this.$http(config).then(res => {
+			this.$rootScope.$broadcast('getTodoReportSuccess', res.data)
+		}
+		)
 			.catch(err => this.$rootScope.$broadcast('getTodoReportError', err));
 
 	}

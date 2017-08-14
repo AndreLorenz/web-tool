@@ -3,6 +3,7 @@
 // node_modules
 import "angular";
 import "jquery";
+import "tether";
 import "angular-ui-router";
 import "angular-animate";
 import "angular-cookies";
@@ -23,3 +24,4 @@ import 'ng-dialog/js/ngDialog.min.js';
 //import "../assets/js/...";
 
 import "../assets/js/now-ui-kit";
+import "../assets/js/plugins/bootstrap-switch";

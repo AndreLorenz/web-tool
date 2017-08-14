@@ -124,6 +124,6 @@ class GeneratorController {
 }
 
 export default {
-  templateUrl: template,
+  template: template,
   controller: GeneratorController
 };

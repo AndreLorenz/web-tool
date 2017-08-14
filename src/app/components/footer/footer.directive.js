@@ -7,7 +7,7 @@ function footerComponent($log) {
 
   var directive = {
     restrict: 'E',
-    templateUrl: footerTpl,
+    template: footerTpl,
     controller: FooterController,
     controllerAs: 'vm',
     scope: true,

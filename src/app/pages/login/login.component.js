@@ -29,6 +29,6 @@ class LoginController {
 }
 
 export default {
-	templateUrl: template,
+	template: template,
 	controller: LoginController
 };

@@ -1,6 +1,14 @@
 <div class="container-fluid max-relative">
   <div class="row" ng-if="$ctrl.hasReport">
     <div class="col-md-12">
+
+      <div class="checkbox">
+        <input id="checkbox1" type="checkbox" ng-model="$ctrl.isRefresh" ng-change="$ctrl.autoRefresh()">
+        <label for="checkbox1">
+        Auto Refresh
+        </label>
+      </div>
+
       <hr class="hr" width="100%" />
       <div class="team">
         <div class="container-groups">
@@ -12,12 +20,12 @@
               <div class="col-md-12  text-center">
                 <span class="category text-primary">{{vev.NAME}}</span><br>
                 <div class="vev-detail">
-                <span class="description-vev" ng-class="{'text-success': vev.DEVELOPMENT == 0, 'text-warning': vev.DEVELOPMENT > 0, 'text-danger': vev.DEVELOPMENT > 6}"><span class="big-number">{{vev.DEVELOPMENT}}</span> Development</span>
-                <span class="description-vev text-default"><span class="small-number">{{vev.TRIAGE}}</span> Triage</span>
-                <span class="description-vev text-default"><span class="small-number">{{vev.ANALISYS}}</span> Analysis</span>
-                <span class="description-vev text-default"><span class="small-number">{{vev.VEV}}</span> V&V</span>
-                <span class="description-vev text-default"><span class="small-number">{{vev.TECHNOLOGY}} / {{vev.TECHNOLOGYSOLIC}}</span> Technology D/S</span>
-                <span class="description-vev text-default"><span class="small-number">{{vev.OPERATION}}</span> Operation</span>
+                  <span class="description-vev" ng-class="{'text-success': vev.DEVELOPMENT == 0, 'text-warning': vev.DEVELOPMENT > 0, 'text-danger': vev.DEVELOPMENT > 6}"><span class="big-number">{{vev.DEVELOPMENT}}</span>                  Development</span>
+                  <span class="description-vev text-default"><span class="small-number">{{vev.TRIAGE}}</span> Triage</span>
+                  <span class="description-vev text-default"><span class="small-number">{{vev.ANALISYS}}</span> Analysis</span>
+                  <span class="description-vev text-default"><span class="small-number">{{vev.VEV}}</span> V&V</span>
+                  <span class="description-vev text-default"><span class="small-number">{{vev.TECHNOLOGY}} / {{vev.TECHNOLOGYSOLIC}}</span>                  Technology D/S</span>
+                  <span class="description-vev text-default"><span class="small-number">{{vev.OPERATION}}</span> Operation</span>
                 </div>
               </div>
               <hr class="hr" width="100%">
@@ -29,8 +37,8 @@
                 <div class="progress-container progress-primary">
                   <span class="progress-badge">{{project.FUNCTIONNAME}}</span>
                   <div class="progress">
-                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{project.PERCENTAGE}}" aria-valuemin="0" aria-valuemax="100"
-                      ng-style="{'width': project.PERCENTAGE + '%'}">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{project.PERCENTAGE}}" aria-valuemin="0"
+                      aria-valuemax="100" ng-style="{'width': project.PERCENTAGE + '%'}">
                       <span class="progress-value">{{project.PERCENTAGE}}%</span>
                     </div>
                   </div>
@@ -60,6 +68,7 @@
 
   <div class="row" ng-if="!$ctrl.hasReport">
     <div class="col-md-12">
+      <hr class="hr" width="100%" />
       <loader message="Your report is being generated, please wait."></loader>
     </div>
   </div>

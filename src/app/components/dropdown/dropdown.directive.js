@@ -7,7 +7,7 @@ function dropdownComponent($log) {
 
   var directive = {
     restrict: 'E',
-    templateUrl: dropdownTpl,
+    template: dropdownTpl,
     controller: DropdownController,
     controllerAs: 'vm',
     scope: true,

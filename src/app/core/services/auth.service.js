@@ -1,10 +1,11 @@
 export class AuthService {
 
-	constructor($rootScope, $http, $localStorage, $q) {
+	constructor($rootScope, $http, $localStorage, $q, serviceConfig) {
 		'ngInject';
 		this.$rootScope = $rootScope;
 		this.$http = $http;
 		this.$localStorage = $localStorage;
+		this.serviceConfig = serviceConfig;
 		this.$q = $q;
 	}
 
@@ -27,7 +28,7 @@ export class AuthService {
 	signin(data) {
 		return this.$http({
 			method: 'POST',
-			url: `http://10.125.2.54:8784/signin`,
+			url: `${this.serviceConfig.BACKEND_URL}/signin`,
 			params: data
 		}).then(res => {
 			if (res.data.err) return console.log(res.data.err.message);

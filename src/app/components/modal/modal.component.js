@@ -29,6 +29,6 @@ class ModalController {
 }
 
 export default {
-  templateUrl: template,
+  template: template,
   controller: ModalController
 };

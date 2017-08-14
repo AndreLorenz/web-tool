@@ -5,7 +5,7 @@ function config($logProvider, $compileProvider, $httpProvider) {
 
   $logProvider.debugEnabled(true);
 
-  if (NODE_ENV === 'production') {
+  if ('' === 'production') {
     $logProvider.debugEnabled(false);
     $compileProvider.debugInfoEnabled(false);
   }
