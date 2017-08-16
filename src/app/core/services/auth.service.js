@@ -37,7 +37,7 @@ export class AuthService {
 			this.setToken(res.data.token);
 			this.setUser(res.data.user);
 		}).catch((err) => {
-			this.messageService.openInfo('Senha ou usuários inválidos!');
+			this.messageService.open(err.data);
 		});
 	}
 

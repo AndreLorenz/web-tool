@@ -36,12 +36,12 @@ body {
   top: 70;
   z-index: 999999;
   animation-name: fade;
-  animation-duration: 10s;
+  animation-duration: 7s;
 }
 
 @keyframes fade {
   0% {
-    opacity: 0;
+    opacity: 1;
   }
 
   50% {
