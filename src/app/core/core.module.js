@@ -5,13 +5,14 @@ import { ReportService } from './services/report.service';
 import { AuthService } from './services/auth.service';
 import { ModalService } from './services/modal.service';
 import { serviceConfig } from './services/service-config.constant';
+import { MessageService } from './services/messages.service';
 
 const coreModule = angular.module('core-module', [])
 	.constant('serviceConfig', serviceConfig)
 	.service('generatorService', GeneratorService)
 	.service('reportService', ReportService)
 	.service('authService', AuthService)
-	.service('modalService', ModalService);
-
+	.service('modalService', ModalService)
+	.service('messageService', MessageService);
 
 export default coreModule;

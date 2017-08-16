@@ -31,5 +31,5 @@ export default angular.module('index.components', [
 	dropdownModule.name,
 	inputListModule.name,
 	loaderModule.name,
-	modalModule.name
+	modalModule.name,
 ]);

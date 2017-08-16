@@ -1,11 +1,12 @@
 export class AuthService {
 
-	constructor($rootScope, $http, $localStorage, $q, serviceConfig) {
+	constructor($rootScope, $http, $localStorage, $q, serviceConfig, messageService) {
 		'ngInject';
 		this.$rootScope = $rootScope;
 		this.$http = $http;
 		this.$localStorage = $localStorage;
 		this.serviceConfig = serviceConfig;
+		this.messageService = messageService;
 		this.$q = $q;
 	}
 
@@ -36,7 +37,7 @@ export class AuthService {
 			this.setToken(res.data.token);
 			this.setUser(res.data.user);
 		}).catch((err) => {
-			console.log(err);
+			this.messageService.openInfo('Senha ou usuários inválidos!');
 		});
 	}
 
