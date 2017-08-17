@@ -41,31 +41,38 @@ class ReportController {
 
 	autoRefresh() {
 		if (this.isRefresh) {
-			this.refresh = this.$interval(() => {
+			this.refreshInterval = this.$interval(() => {
 				if (new Date().getHours() >= 7 && new Date().getHours() <= 20) {
 					this.isRefreshLoader = true;
 					this.reportService.getTodoReport();
 				}
 			}, 90000);
-
-			if (!this.selected.code) {
-				this.isVev = true;
-				this.isProject = false;
-				this.changeCard = this.$interval(() => {
-					this.isVev = !this.isVev;
-					this.isProject = !this.isProject;
-				}, 10000);
-			}
 		} else {
-			if (this.refresh) {
-				this.$interval.cancel(this.refresh);
-				this.$interval.cancel(this.changeCard);
-				this.isVev = true;
-				this.isProject = true;
-				this.refresh = undefined;
-				this.changeCard = undefined;
+			if (this.refreshInterval) {
+				this.$interval.cancel(this.refreshInterval);
+				this.refreshInterval = undefined;
 			}
 		}
+	}
+
+	activateChangeCard() {
+		if (this.isChangeCard) {
+			this.isVev = true;
+			this.isProject = false;
+			this.changeCardInterval = this.$interval(() => {
+				this.isVev = !this.isVev;
+				this.isProject = !this.isProject;
+			}, 15000);
+		} else {
+			this.$interval.cancel(this.changeCardInterval);
+			this.isVev = true;
+			this.isProject = true;
+			this.changeCardInterval = undefined;
+		}
+	}
+
+	validateAlertVev(func) {
+		return !func.DEVELOPMENT && !func.TRIAGE && !func.ANALISYS && !func.TECHNOLOGY && !func.TECHNOLOGYSOLIC && !func.OPERATION && func.VEV;
 	}
 
 }
