@@ -71,6 +71,10 @@ class ReportController {
 		}
 	}
 
+	validateAlertVev(func) {
+		return !func.DEVELOPMENT && !func.TRIAGE && !func.ANALISYS && !func.TECHNOLOGY && !func.TECHNOLOGYSOLIC && !func.OPERATION && func.VEV;
+	}
+
 }
 
 export default {

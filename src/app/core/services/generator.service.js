@@ -44,7 +44,7 @@ export class GeneratorService {
 				'schematicsCode': schematicsCode
 			}
 		};
-		return this.$http(config).then(res => res.data).catch(err => err.data);
+		return this.$http(config).then(res => res.data);
 	}
 
 	getModules(schematicsCode) {

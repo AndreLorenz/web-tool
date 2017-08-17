@@ -3,13 +3,14 @@ import template from './generator.html';
 
 class GeneratorController {
 
-  constructor($scope, $state, generatorService, authService, modalService) {
+  constructor($scope, $state, generatorService, authService, modalService, messageService) {
     'ngInject';
     this.$scope = $scope;
     this.$state = $state;
     this.generatorService = generatorService;
     this.authService = authService;
     this.modalService = modalService;
+    this.messageService = messageService;
     this.config = {
       webservice: true
     };
@@ -88,15 +89,18 @@ class GeneratorController {
 
   getFunctionDetail() {
     // if (this.config.code && this.config.selectedModule && (this.config.selectedModule.title || this.config.selectedModule.originalObject)) {
-      this.generatorService.getFunctionDetail(this.config.code).then(response => {
-        this.config = {
-          ...this.config,
-          ...response
-        };
-        this.labelPreview = 'Reload Informations'
-        this.config.functionModule = this.config.selectedModule.title || this.config.selectedModule.originalObject;
-      });
+    this.generatorService.getFunctionDetail(this.config.code).then(response => {
       this.previewStructure = true;
+      this.config = {
+        ...this.config,
+        ...response
+      };
+      this.labelPreview = 'Reload Informations'
+      // this.config.functionModule = this.config.selectedModule.title || this.config.selectedModule.originalObject;
+    }).catch(err => {
+      this.previewStructure = false;
+      return this.messageService.open(err.data)
+    });
     // }
   }
 

@@ -17,7 +17,7 @@
 					<div class="col-sm-12">
 						<div class="control-group form-group form-group-no-border">
 							<input type="number" ng-model="$ctrl.config.code" class="form-control text-center" id="schematicsFunctionCode" placeholder="Schematics function code:"
-							  ng-required="true" autocomplete="off" ng-blur="$ctrl.getFunctionDetail(generateForm.$valid)">
+							  ng-required="true" autocomplete="off" >
 						</div>
 					</div>
 					<button type="button" class="btn btn-info" ng-click="$ctrl.getFunctionDetail(generateForm.$valid)" ng-disabled="$ctrl.validModule() || !generateForm.$valid">{{$ctrl.labelPreview}}</button>
