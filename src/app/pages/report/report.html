@@ -12,8 +12,15 @@
           </ul>
         </div>
 
-
         <div class="checkbox">
+          <input id="checkbox3" type="checkbox" ng-model="$ctrl.isShowBack">
+          <label for="checkbox3">
+        Show Backloge
+        </label>
+          <input id="checkbox2" type="checkbox" ng-model="$ctrl.isChangeCard" ng-change="$ctrl.activateChangeCard()">
+          <label for="checkbox2">
+        Change Cards
+        </label>
           <input id="checkbox1" type="checkbox" ng-model="$ctrl.isRefresh" ng-change="$ctrl.autoRefresh()">
           <label for="checkbox1">
         Auto Refresh
@@ -48,13 +55,13 @@
 
             <div ng-if="$ctrl.isProject">
               <h6 class="title">Project</h6>
-              <div class="row" ng-repeat="project in group.projectFunctions">
+              <div class="row" ng-repeat="project in group.projectFunctions | filter:{STAGE: $ctrl.isShowBack ? undefined : 12}">
                 <div class="col-md-12">
-                  <div class="progress-container progress-primary">
+                  <div class="progress-container" ng-class="{'progress-primary': project.STAGE == 12, 'progress-info':  project.STAGE == 42}">
                     <span class="progress-badge">{{project.FUNCTIONNAME}}</span>
                     <div class="progress">
-                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{project.PERCENTAGE}}" aria-valuemin="0"
-                        aria-valuemax="100" ng-style="{'width': project.PERCENTAGE + '%'}">
+                      <div class="progress-bar" ng-class="{'progress-bar-primary': project.STAGE == 12, 'progress-bar-info':  project.STAGE == 42}"
+                        role="progressbar" aria-valuenow="{{project.PERCENTAGE}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': project.PERCENTAGE + '%'}">
                         <span class="progress-value">{{project.PERCENTAGE | number:2}}%</span>
                       </div>
                     </div>
