@@ -12,10 +12,7 @@ export class ReportService {
 			method: 'GET',
 			url: `${this.serviceConfig.BACKEND_URL}/todo-report`
 		};
-		return this.$http(config).then(res => {
-			this.$rootScope.$broadcast('getTodoReportSuccess', res.data)
-		}
-		)
+		return this.$http(config).then(res => this.$rootScope.$broadcast('getTodoReportSuccess', res.data))
 			.catch(err => this.$rootScope.$broadcast('getTodoReportError', err));
 
 	}
