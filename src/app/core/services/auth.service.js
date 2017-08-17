@@ -36,8 +36,6 @@ export class AuthService {
 			this.$rootScope.$broadcast("userLogged", res.data.user);
 			this.setToken(res.data.token);
 			this.setUser(res.data.user);
-		}).catch((err) => {
-			this.messageService.open(err.data);
 		});
 	}
 

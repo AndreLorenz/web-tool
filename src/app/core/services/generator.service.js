@@ -18,9 +18,10 @@ export class GeneratorService {
 			}
 		};
 		this.$http(config).then(res => {
-			this.$rootScope.$broadcast('getGeneratorFilesSuccess', res.data);
+			if (res.data) this.$rootScope.$broadcast('getGeneratorFilesSuccess', res.data);
+			else this.$rootScope.$broadcast('getGeneratorFilesError', { message: "Function does not have files to create", type: "error" });
 		}).catch(err => {
-			this.$rootScope.$broadcast('getGeneratorFilesError', err);
+			this.$rootScope.$broadcast('getGeneratorFilesError', err.data);
 		});
 	}
 
