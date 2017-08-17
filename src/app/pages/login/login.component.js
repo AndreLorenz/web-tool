@@ -20,7 +20,7 @@ class LoginController {
 	}
 
 	login(user) {
-		return this.authService.signin(user);
+		return this.authService.signin(user).then(response => this.messageService.open({ message: 'Login done successfully!', type: 'info' }));
 	}
 
 	clear() {
