@@ -39,7 +39,7 @@
               <h6 class="title">V&V</h6>
               <div class="row" ng-repeat="vev in group.vevFunctions">
                 <div class="col-md-12  text-center">
-                  <span class="category text-primary">{{vev.NAME}}</span><br>
+                  <span class="category text-primary">{{vev.NAME}} <span ng-if="vev.QUARTER" class="text-info">- {{vev.QUARTER}}</span></span><br>
                   <div class="vev-detail">
                     <span class="description-vev text-default"><span ng-class="{'big-number': vev.DEVELOPMENT > 0, 'small-number text-success': vev.DEVELOPMENT == 0, 'text-warning': vev.DEVELOPMENT > 0, 'text-danger': vev.DEVELOPMENT > 6}">{{vev.DEVELOPMENT}}</span><br>                    Development</span>
                     <span class="description-vev text-default"><span class="small-number">{{vev.TRIAGE}}</span><br> Triage</span>
@@ -58,7 +58,7 @@
               <div class="row" ng-repeat="project in group.projectFunctions | filter:{STAGE: $ctrl.isShowBack ? undefined : 12}">
                 <div class="col-md-12">
                   <div class="progress-container" ng-class="{'progress-primary': project.STAGE == 12, 'progress-info':  project.STAGE == 42}">
-                    <span class="progress-badge">{{project.FUNCTIONNAME}}</span>
+                    <span class="progress-badge">{{project.FUNCTIONNAME}} <span ng-if="project.QUARTER" class="text-info">- {{project.QUARTER}}</span></span>
                     <div class="progress">
                       <div class="progress-bar" ng-class="{'progress-bar-primary': project.STAGE == 12, 'progress-bar-info':  project.STAGE == 42}"
                         role="progressbar" aria-valuenow="{{project.PERCENTAGE}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': project.PERCENTAGE + '%'}">
