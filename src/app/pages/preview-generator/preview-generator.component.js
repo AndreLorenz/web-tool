@@ -3,13 +3,15 @@ import template from './preview-generator.html';
 
 class PreviewGeneratorController {
 
-  constructor($rootScope, $scope, generatorService, $stateParams, modalService) {
+  constructor($rootScope, $scope, generatorService, $state, $stateParams, modalService, messageService) {
     'ngInject';
     this.$scope = $scope;
     this.$rootScope = $rootScope;
     this.generatorService = generatorService;
+    this.$state = $state;
     this.$stateParams = $stateParams;
     this.modalService = modalService;
+    this.messageService = messageService;
     this.initializer();
     this.tree = [];
     this.editorOptions = {
@@ -27,7 +29,8 @@ class PreviewGeneratorController {
       this.hasTree = true;
     });
     this.$scope.$on('getGeneratorFilesError', (event, err) => {
-      console.log(err);
+      this.messageService.open(err);
+      this.$state.transitionTo('generator');
     });
   }
 
