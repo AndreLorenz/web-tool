@@ -128,7 +128,7 @@ const nowuiKit = {
 
     initRightMenu: function(){
         if(!toggle_initialized){
-            $toggle = $('.navbar-toggler');
+            var $toggle = $('.navbar-toggler');
 
             $toggle.click(function (){
                 if(nowuiKit.misc.navbar_menu_visible == 1) {

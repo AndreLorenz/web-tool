@@ -14,6 +14,14 @@ export class ReportService {
 		};
 		return this.$http(config).then(res => this.$rootScope.$broadcast('getTodoReportSuccess', res.data))
 			.catch(err => this.$rootScope.$broadcast('getTodoReportError', err));
+	}
 
+	getAnalistReport() {
+		const config = {
+			method: 'GET',
+			url: `${this.serviceConfig.BACKEND_URL}/analist-report`
+		};
+		return this.$http(config).then(res => this.$rootScope.$broadcast('getAnalistReportSuccess', res.data))
+			.catch(err => this.$rootScope.$broadcast('getAnalistError', err));
 	}
 }

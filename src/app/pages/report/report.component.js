@@ -14,12 +14,14 @@ class ReportController {
 		this.groupNames = [];
 		this.selected = {};
 		this.isRefresh = false;
+		this.viewAnalisys = false;
 		this.initializer();
 	}
 
 	initializer() {
+		// todo report
 		this.$scope.$on('getTodoReportSuccess', (event, res) => {
-			this.groups = res;
+			this.groups = res.filter(value => value.code !== 352);
 			this.groupNames = res.map(value => ({ name: value.name, code: value.code }));
 			this.groupNames.push({ name: "All groups", code: undefined });
 			if (!this.selected.code) this.selected = this.groupNames.find(value => !value.code);
@@ -33,10 +35,31 @@ class ReportController {
 		this.$scope.$on('getTodoReportError', (event, err) => {
 			console.log(err);
 		});
+		//analisys report
+		this.$scope.$on('getAnalistReportSuccess', (event, res) => {
+			this.analists = res;
+		});
+		this.$scope.$on('getAnalistReportError', (event, err) => {
+			console.log(err);
+		});
 	}
 
 	changeGroup(groupName) {
-		this.selected = groupName;
+		if (groupName.code == 352) {
+			this.selected = groupName;
+			this.viewAnalisys = true;
+			this.isRefresh = true;
+			this.autoRefresh();
+		} else if (!groupName) {
+			this.selected = groupName;
+			this.viewAnalisys = false;
+			this.isRefresh = false;
+		} else {
+			this.selected = groupName;
+			this.viewAnalisys = false;
+			this.isRefresh = true;
+			this.autoRefresh();
+		}
 	}
 
 	autoRefresh() {
@@ -45,6 +68,7 @@ class ReportController {
 				if (new Date().getHours() >= 7 && new Date().getHours() <= 20) {
 					this.isRefreshLoader = true;
 					this.reportService.getTodoReport();
+					this.reportService.getAnalistReport();
 				}
 			}, 90000);
 		} else {

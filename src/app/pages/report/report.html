@@ -13,12 +13,13 @@
         </div>
 
         <div class="checkbox">
-          <input id="checkbox3" type="checkbox" ng-model="$ctrl.isShowBack">
-          <label for="checkbox3">
+          <input id="checkbox3" type="checkbox" ng-model="$ctrl.isShowBack" ng-show="!$ctrl.viewAnalisys" ng-hide="$ctrl.viewAnalisys">
+          <label for="checkbox3" ng-show="!$ctrl.viewAnalisys" ng-hide="$ctrl.viewAnalisys">
         Show Backloge
         </label>
-          <input id="checkbox2" type="checkbox" ng-model="$ctrl.isChangeCard" ng-change="$ctrl.activateChangeCard()">
-          <label for="checkbox2">
+          <input id="checkbox2" type="checkbox" ng-model="$ctrl.isChangeCard" ng-change="$ctrl.activateChangeCard()" ng-show="!$ctrl.viewAnalisys"
+            ng-hide="$ctrl.viewAnalisys">
+          <label for="checkbox2" ng-show="!$ctrl.viewAnalisys" ng-hide="$ctrl.viewAnalisys">
         Change Cards
         </label>
           <input id="checkbox1" type="checkbox" ng-model="$ctrl.isRefresh" ng-change="$ctrl.autoRefresh()">
@@ -72,7 +73,6 @@
                 </div>
               </div>
               <hr class="hr" width="100%">
-
               <h6 class="title">Opened Pull Requests</h6>
               <div class="row">
                 <div class="col-md-6">
@@ -82,16 +82,42 @@
                   <p class="description-pr"><span class="big-number">{{group.pullRequests.backend}}</span> Tasy-Backend </p>
                 </div>
               </div>
-              <!-- <hr class="hr hr-color" width="100%"> -->
             </div>
-
           </div>
-
         </div>
-
+      </div>
+      <!-- Analysis -->
+      <div class="team" ng-show="$ctrl.viewAnalisys" ng-hide="!$ctrl.viewAnalisys">
+        <div class="container-groups">
+          <div class="group-body team-player" ng-repeat="analist in $ctrl.analists">
+            <h4 class="title" ng-if="analist.dsAnalista">{{analist.dsAnalista}}</h4>
+            <h4 class="title" ng-if="!analist.dsAnalista">Not name</h4>
+            <div ng-if="$ctrl.isVev">
+              <h6 class="title">V&V</h6>
+              <div class="row" ng-repeat="info in analist.dados">
+                <div class="col-md-12  text-center">
+                  <span class="category text-primary">{{info.CD_FUNCAO_P}} - {{info.DS_FUNCAO}}</span><br>
+                  <div class="vev-detail">
+                    <span class="description-vev text-default"><span class="big-number">{{info.QT_TRIAGEM}}</span><br>Triage</span>
+                    <span class="description-vev text-default"><span class="big-number">{{info.QT_OS_ANALISE}}</span><br>Analysis</span>
+                  </div>
+                  <hr class="hr" width="100%">
+                </div>
+              </div>
+              <h6 class="title">OS's</h6>
+              <div class="row" ng-repeat="info in analist.dados">
+                <div class="col-md-12 text-center">
+                  <span class="text-primary ">{{info.DS_FUNCAO}}</span><br>
+                  <span class="text-default small-number">{{info.DS_LISTA_OS}}</span><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <hr class="hr" width="100%">
 
   <div class="row" ng-if="!$ctrl.hasReport">
     <div class="col-md-12">

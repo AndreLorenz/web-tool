@@ -34,6 +34,7 @@ function routeConfig($stateProvider) {
       component: 'reportComponent',
       onEnter: (reportService) => {
         reportService.getTodoReport();
+        reportService.getAnalistReport();
       }
     })
     .state('preview-generator', {
