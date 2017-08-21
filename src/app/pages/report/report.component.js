@@ -63,7 +63,7 @@ class ReportController {
 	}
 
 	autoRefresh() {
-		if (this.isRefresh) {
+		if (this.isRefresh && !this.refreshInterval) {
 			this.refreshInterval = this.$interval(() => {
 				if (new Date().getHours() >= 7 && new Date().getHours() <= 20) {
 					this.isRefreshLoader = true;
@@ -71,7 +71,7 @@ class ReportController {
 					this.reportService.getAnalistReport();
 				}
 			}, 90000);
-		} else {
+		} else if (!this.isRefresh) {
 			if (this.refreshInterval) {
 				this.$interval.cancel(this.refreshInterval);
 				this.refreshInterval = undefined;
