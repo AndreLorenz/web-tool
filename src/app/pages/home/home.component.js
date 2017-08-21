@@ -3,27 +3,21 @@ import template from './home.html';
 
 class HomeController {
 
-  constructor() {
+  constructor($scope, authService) {
     'ngInject';
-    this.cards = [{
-        'title': 'Generate Structure',
-        'description': 'Generate the Structure for tasy HTML5',
-        'img': require('../../../assets/images/generator.svg'),
-        'uisref': 'generator'
-      },
-      {
-        'title': 'View Reports for Groups',
-        'description': 'View Reports for Groups',
-        'img': require('../../../assets/images/report.svg'),
-        'uisref': 'report'
-      },
-      {
-        'title': 'Delete collaborators',
-        'description': 'Delete collaborators',
-        'img': require('../../../assets/images/deleted.svg'),
-        'uisref': 'generator'
-      }
-    ]
+    this.$scope = $scope;
+    this.authService = authService;
+    this.initialize();
+  }
+
+  initialize() {
+    this.$scope.$on('getUserDataSuccess', (event, res) => {
+      this.cards = res.pages;
+      console.log(this.cards);
+    });
+    this.$scope.$on('getUserDataError', (event, err) => {
+      console.log(err);
+    });
   }
 }
 

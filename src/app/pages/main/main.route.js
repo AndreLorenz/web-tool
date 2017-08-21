@@ -19,7 +19,11 @@ function routeConfig($stateProvider) {
     })
     .state('home', {
       url: '/',
-      component: 'homeComponent'
+      component: 'homeComponent',
+      onEnter: (authService, mongoDBService) => {
+        mongoDBService.getUsers(authService.getUser());
+        console.log(authService.getUser());
+      }
     })
     .state('generator', {
       url: '/generator',

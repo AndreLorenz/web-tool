@@ -3,7 +3,7 @@
   <div class="row">
     <div class="span12">
       <form class="form-horizontal" ng-submit="$ctrl.login($ctrl.github)" name="loginForm">
-        <legend>SETTINGS</legend>
+        <legend>SETTINGS {{$ctrl.authService.getUser().permissions}}</legend>
       </form>
     </div>
   </div>

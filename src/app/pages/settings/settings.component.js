@@ -3,8 +3,9 @@ import template from './settings.html';
 
 class SettingsController {
 
-	constructor() {
+	constructor(authService) {
 		'ngInject';
+		this.authService = authService;
 	}
 }
 
