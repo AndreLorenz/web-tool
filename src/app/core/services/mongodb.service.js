@@ -13,7 +13,9 @@ export class MongoDBService {
 			method: 'GET',
 			url: `${this.serviceConfig.BACKEND_URL}/users/:user`,
 			params: { user: { userName: this.authService.getUser().login, name: this.authService.getUser().name } }
-		}).then(res => this.$rootScope.$broadcast('getUserDataSuccess', res.data))
-			.catch(err => this.$rootScope.$broadcast('getUserDataError', err));
+		}).then(res => {
+			this.authService.getUser().db = res.data;
+			return this.$rootScope.$broadcast('getUserDataSuccess', res.data)
+		}).catch(err => this.$rootScope.$broadcast('getUserDataError', err));
 	}
 }

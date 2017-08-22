@@ -12,7 +12,7 @@ class HomeController {
 
   initialize() {
     this.$scope.$on('getUserDataSuccess', (event, res) => {
-      this.cards = res.pages;
+      this.cards = res.pages.filter(item => item.typePage == "C");
       console.log(this.cards);
     });
     this.$scope.$on('getUserDataError', (event, err) => {

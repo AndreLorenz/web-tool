@@ -1,11 +1,73 @@
-<hr class="hr col-md-10" />
-<div class="container">
-  <div class="row">
-    <div class="span12">
-      <form class="form-horizontal" ng-submit="$ctrl.login($ctrl.github)" name="loginForm">
-        <legend>SETTINGS {{$ctrl.authService.getUser().permissions}}</legend>
-      </form>
+<div class="wrapper">
+  <nav id="sidebar">
+    <ul class="list-unstyled">
+      <li ng-repeat="item in $ctrl.settings">
+        <!-- <a class="sidebar-item" href="#{{item.ref}}" data-toggle="collapse" aria-expanded="false" ng-if="item.ref" uisref="item.ref">
+          <i class="now-ui-icons business_badge"></i>{{item.title}}
+        </a> -->
+        <a class="sidebar-item" href="#{{item.ref}}" data-toggle="collapse" aria-expanded="false" ng-if="item.ref">
+          <i class="now-ui-icons {{item.ico}}"></i>{{item.title}}
+        </a>
+        <ul class="collapse list-unstyled" id="{{item.ref}}" ng-if="item.subItems">
+          <li ng-repeat="subitem in item.subItems"><a class="sidebar-item" href="#"><i class="now-ui-icons {{subitem.ico}}"></i>{{subitem.title}}</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <div id="content">
+    <hr class="hr col-md-10" />
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <form class="form-horizontal" ng-submit="$ctrl.login($ctrl.github)" name="loginForm">
+            <legend>SETTINGS {{$ctrl.authService.getUser().permissions}}</legend>
+          </form>
+        </div>
+      </div>
     </div>
+    <hr class="hr col-md-10" />
   </div>
 </div>
-<hr class="hr col-md-10" />
+
+<!-- <div class="wrapper">
+  <nav id="sidebar">
+    <ul class="list-unstyled">
+      <li ng-repeat="item in $ctrl.settings.itemsPage">
+        <a class="sidebar-item" href="#{{item.ref}}" data-toggle="collapse" aria-expanded="false" ng-if="item.ref" uisref="item.ref">
+          <i class="now-ui-icons business_badge"></i>Perfil
+        </a>
+        <a class="sidebar-item" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" ng-if="!item.ref">
+          <i class="now-ui-icons business_badge"></i>Perfil
+        </a>
+        <ul class="collapse list-unstyled" id="{{item.ref}}">
+          <li><a class="sidebar-item" href="#">Cadastro WebTool</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="sidebar-item" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+          <i class="now-ui-icons business_globe"></i>Admin
+        </a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li><a class="sidebar-item" href="#">Permissions</a></li>
+          <li><a class="sidebar-item" href="#">Pages</a></li>
+          <li><a class="sidebar-item" href="#">Users</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <div id="content">
+    <hr class="hr col-md-10" />
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <form class="form-horizontal" ng-submit="$ctrl.login($ctrl.github)" name="loginForm">
+            <legend>SETTINGS {{$ctrl.authService.getUser().permissions}}</legend>
+          </form>
+        </div>
+      </div>
+    </div>
+    <hr class="hr col-md-10" />
+  </div>
+</div> -->

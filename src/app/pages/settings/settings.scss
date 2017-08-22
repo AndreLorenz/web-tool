@@ -1,3 +1,46 @@
-   .git-hub {
-     max-width: 60%;
-   }
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.sidebar-item {
+  color: #fff !important;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: #2f343e;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  background: #838383;
+}
+#sidebar ul li a i {
+  margin-right: 5px;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+  color: #fff;
+  background: #838383;
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #838383;
+}
+
+#content {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+} 
