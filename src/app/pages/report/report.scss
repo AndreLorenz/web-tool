@@ -274,12 +274,11 @@
   color: #8c8c8c !important;
 }
 
-.btn-breadcump :focus {
-  box-shadow: 0 0 0 0;
-  webkit-box-shadow: 0 0 0 0;
-}
-
 .badge {
   margin-bottom: 0px !important;
   padding: 1px 4px !important;
+}
+
+.dropdown-item {
+  cursor: pointer;
 }

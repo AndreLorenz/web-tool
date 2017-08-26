@@ -16,7 +16,7 @@ class ReportController {
 		this.selected = {};
 		this.isRefresh = false;
 		this.viewAnalisys = false;
-		this.primary = [{ name: 'Desenv', code: 1 }, { name: 'Analisty', code: 2 }];
+		this.primary = [{ name: 'Developers', code: 1 }, { name: 'Analysts', code: 2 }];
 		this.initializer();
 	}
 
