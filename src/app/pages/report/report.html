@@ -3,35 +3,61 @@
     <div class="col-md-12">
       <div ng-if="$ctrl.isRefreshLoader" class="loading">Loading&#8230;</div>
       <div class="menu-container-flex">
-        <div class="dropdown">
-          <a href="#pablo" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink1">
-    	{{$ctrl.selected.name}}
-    </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-            <li class="dropdown-item" ng-repeat="groupName in $ctrl.groupNames | orderBy:'name'" ng-click="$ctrl.changeGroup(groupName)">{{groupName.name}}</li>
-          </ul>
-        </div>
 
-        <div class="checkbox">
-          <input id="checkbox3" type="checkbox" ng-model="$ctrl.isShowBack" ng-show="!$ctrl.viewAnalisys" ng-hide="$ctrl.viewAnalisys">
-          <label for="checkbox3" ng-show="!$ctrl.viewAnalisys" ng-hide="$ctrl.viewAnalisys">
-        Show Backlog
-        </label>
-          <input id="checkbox2" type="checkbox" ng-model="$ctrl.isChangeCard" ng-change="$ctrl.activateChangeCard()" ng-show="!$ctrl.viewAnalisys"
-            ng-hide="$ctrl.viewAnalisys">
-          <label for="checkbox2" ng-show="!$ctrl.viewAnalisys" ng-hide="$ctrl.viewAnalisys">
-        Change Cards
-        </label>
-          <input id="checkbox1" type="checkbox" ng-model="$ctrl.isRefresh" ng-change="$ctrl.autoRefresh()">
-          <label for="checkbox1">
-        Auto Refresh
-        </label>
-        </div>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <div class="btn-group dropdown-breadcump">
+              <a href="#" class="btn btn-secondary btn-sm dropdown-toggle btn-breadcump" data-toggle="dropdown" id="navbarDropdown">{{$ctrl.selectedPrimary.name}}</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                <div ng-repeat="item in $ctrl.primary">
+                  <a class="dropdown-item" ng-click="$ctrl.changePrimary(item)">{{item.name}}</a>
+                </div>
+              </ul>
+            </div>
+          </li>
+          <li class="breadcrumb-item">
+            <div class="dropdown dropdown-breadcump-child">
+              <a href="#" class="btn btn-secondary btn-sm dropdown-toggle btn-breadcump" data-toggle="dropdown" id="navbarDropdown">{{$ctrl.selected.name}}</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                <div ng-repeat="subItem in $ctrl.groupChild | orderBy:'name'">
+                  <a class="dropdown-item" ng-click="$ctrl.changeGroup(subItem)">{{subItem.name}}</a>
+                </div>
+              </ul>
+            </div>
+          </li>
+          <li class="breadcrumb-item">
+            <div class="dropdown dropdown-breadcump-child">
+              <a href="#" class="btn btn-secondary btn-sm dropdown-toggle btn-breadcump" data-toggle="dropdown" id="navbarDropdown">Filter
+                <span> : </span>
+                <span ng-if="!$ctrl.isShowBack || !$ctrl.isChangeCard || !$ctrl.isRefresh" ng-hide="$ctrl.isShowBack || $ctrl.isChangeCard || $ctrl.isRefresh" class="badge badge-warning" ng-if="$ctrl.isShowBack">Default </span>
+                <span class="badge badge-warning" ng-if="$ctrl.isShowBack">Show Backlog </span>
+                <span class="badge badge-warning" ng-if="$ctrl.isChangeCard">Change Cards </span>
+                <span class="badge badge-warning" ng-if="$ctrl.isRefresh">Auto Refresh </span>
+              </a>
+              <ul aria-labelledby="navbarDropdownMenuLink1">
+                <div class="checkbox dropdown-menu">
+                  <div class="dropdown-item" ng-if="!$ctrl.viewAnalisys">
+                    <input id="checkbox3" type="checkbox" ng-model="$ctrl.isShowBack" ng-show="!$ctrl.viewAnalisys" ng-hide="$ctrl.viewAnalisys">
+                    <label for="checkbox3" ng-show="!$ctrl.viewAnalisys" ng-hide="$ctrl.viewAnalisys">Show Backlog</label>
+                  </div>
+                  <div class="dropdown-item" ng-if="!$ctrl.viewAnalisys">
+                    <input id="checkbox2" type="checkbox" ng-model="$ctrl.isChangeCard" ng-change="$ctrl.activateChangeCard()" ng-show="!$ctrl.viewAnalisys"
+                      ng-hide="$ctrl.viewAnalisys">
+                    <label for="checkbox2" ng-show="!$ctrl.viewAnalisys" ng-hide="$ctrl.viewAnalisys">Change Cards</label>
+                  </div>
+                  <div class="dropdown-item">
+                    <input id="checkbox1" type="checkbox" ng-model="$ctrl.isRefresh" ng-change="$ctrl.autoRefresh()">
+                    <label for="checkbox1">Auto Refresh</label>
+                  </div>
+                </div>
+              </ul>
+            </div>
+          </li>
+        </ol>
       </div>
 
-
       <hr class="hr" width="100%" />
-      <div class="team">
+      <div class="team" ng-show="!$ctrl.viewAnalisys" ng-hide="$ctrl.viewAnalisys">
         <div class="container-groups">
           <div class="group-body team-player" ng-repeat="group in $ctrl.groups | filter:{code: $ctrl.selected.code}">
             <h4 class="title">{{group.name}}</h4>
@@ -89,10 +115,10 @@
       <!-- Analysis -->
       <div class="team" ng-show="$ctrl.viewAnalisys" ng-hide="!$ctrl.viewAnalisys">
         <div class="container-groups">
-          <div class="group-body team-player" ng-repeat="analist in $ctrl.analists">
-            <h4 class="title" ng-if="analist.dsAnalista">{{analist.dsAnalista}}</h4>
-            <h4 class="title" ng-if="!analist.dsAnalista">Not name</h4>
-            <div ng-if="$ctrl.isVev">
+          <div class="group-body team-player" ng-repeat="analist in $ctrl.groups | filter:{code: $ctrl.selected.code}">
+            <h4 class="title" ng-if="analist.name">{{analist.name}}</h4>
+            <h4 class="title" ng-if="!analist.name">Not name</h4>
+            <div>
               <h6 class="title">V&V</h6>
               <div class="row" ng-repeat="info in analist.dados">
                 <div class="col-md-12  text-center">

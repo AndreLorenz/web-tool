@@ -122,6 +122,9 @@
 .checkbox{
   padding-top: 10px;
   text-align: right;
+  margin-bottom: 12px;
+  position: absolute;
+  right: 0px;
 }
 
 
@@ -243,4 +246,40 @@
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.dropdown-breadcump {
+  top: -4;
+  color: #000 !important;
+}
+
+.dropdown-breadcump-child {
+  position: relative;
+  padding-left: 20px;
+  top: -25;
+}
+
+.breadcrumb {
+  padding: 0.85rem 1rem !important;
+  background-color: transparent !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.btn-breadcump {
+  margin-right: 20px;
+  background-color: transparent !important;
+  border: 0px;
+  background-color: transparent !important;
+  color: #8c8c8c !important;
+}
+
+.btn-breadcump :focus {
+  box-shadow: 0 0 0 0;
+  webkit-box-shadow: 0 0 0 0;
+}
+
+.badge {
+  margin-bottom: 0px !important;
+  padding: 1px 4px !important;
 }

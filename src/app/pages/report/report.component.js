@@ -3,11 +3,12 @@ import template from './report.html';
 
 class ReportController {
 
-	constructor($scope, $state, reportService, $interval, $timeout) {
+	constructor($scope, $state, reportService, $interval, $timeout, messageService) {
 		'ngInject';
 		this.$scope = $scope;
 		this.$state = $state;
 		this.reportService = reportService;
+		this.messageService = messageService;
 		this.$interval = $interval;
 		this.$timeout = $timeout;
 		this.groups = [];
@@ -15,15 +16,19 @@ class ReportController {
 		this.selected = {};
 		this.isRefresh = false;
 		this.viewAnalisys = false;
+		this.primary = [{ name: 'Desenv', code: 1 }, { name: 'Analisty', code: 2 }];
 		this.initializer();
 	}
 
 	initializer() {
 		// todo report
 		this.$scope.$on('getTodoReportSuccess', (event, res) => {
-			this.groups = res.filter(value => value.code !== 352);
+			this.selectedPrimary = { name: 'Desenv', code: 1 };
+			this.desenv = res.filter(value => value.code !== 352);
+			this.groups = this.desenv;
 			this.groupNames = res.map(value => ({ name: value.name, code: value.code }));
-			this.groupNames.push({ name: "All groups", code: undefined });
+			this.desenvNames = this.desenv.map(value => ({ name: value.name, code: value.code }));
+			this.desenvNames.push({ name: "All groups", code: undefined });
 			if (!this.selected.code) this.selected = this.groupNames.find(value => !value.code);
 			this.hasReport = true;
 			this.isRefreshLoader = undefined;
@@ -31,33 +36,55 @@ class ReportController {
 				this.isVev = true;
 				this.isProject = true;
 			}
+			this.changePrimary(this.selectedPrimary);
 		});
 		this.$scope.$on('getTodoReportError', (event, err) => {
+			this.messageService.open(err);
 			console.log(err);
 		});
 		//analisys report
 		this.$scope.$on('getAnalistReportSuccess', (event, res) => {
 			this.analists = res;
+			this.analistsNames = res.filter(value => ({ name: value.dsAnalista, code: value.nmAnalista }));
+			this.analistsNames.push({ name: "All groups", code: undefined });
 		});
 		this.$scope.$on('getAnalistReportError', (event, err) => {
+			this.messageService.open(err);
 			console.log(err);
 		});
 	}
 
 	changeGroup(groupName) {
-		if (groupName.code == 352) {
+		if (groupName.code == 2) {
 			this.selected = groupName;
-			this.viewAnalisys = true;
 			this.isRefresh = true;
 			this.autoRefresh();
-		} else if (!groupName) {
-			this.selected = groupName;
-			this.viewAnalisys = false;
-			this.isRefresh = false;
 		} else {
 			this.selected = groupName;
+			this.isRefresh = true;
+			this.autoRefresh();
+		}
+	}
+
+	changePrimary(item) {
+		if (item.code == 1) {
+			this.groups = this.desenv;
+			this.groupChild = this.desenvNames;
+			this.selectedPrimary = item;
+			this.selected = { name: "All groups", code: undefined };
 			this.viewAnalisys = false;
 			this.isRefresh = true;
+			this.isShowBack = true;
+			this.autoRefresh();
+		} else {
+			this.isChangeCard = false;
+			this.groups = this.analists;
+			this.groupChild = this.analistsNames;
+			this.viewAnalisys = true;
+			this.isShowBack = false;
+			this.isRefresh = true;
+			this.selectedPrimary = item;
+			this.selected = { name: "All groups", code: undefined };
 			this.autoRefresh();
 		}
 	}
