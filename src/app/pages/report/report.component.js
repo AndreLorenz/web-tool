@@ -23,7 +23,7 @@ class ReportController {
 	initializer() {
 		// todo report
 		this.$scope.$on('getTodoReportSuccess', (event, res) => {
-			this.selectedPrimary = { name: 'Desenv', code: 1 };
+			this.selectedPrimary = { name: 'Developers', code: 1 };
 			this.desenv = res.filter(value => value.code !== 352);
 			this.groups = this.desenv;
 			this.groupNames = res.map(value => ({ name: value.name, code: value.code }));
