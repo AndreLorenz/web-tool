@@ -30,6 +30,11 @@ class ReportController {
 	}
 
 	initializer() {
+		// Filter default values
+		this.setFilterDefault();
+		this.isVev = true;
+		this.isProject = true;
+
 		// Todo Report Events
 		this.$scope.$on('getTodoReportSuccess', (event, res) => {
 			this.desenvReport = res.filter(value => value.code !== reportCodes.ANALISYS);
@@ -75,17 +80,13 @@ class ReportController {
 
 		if (item.code == primaryCodes.DEVELOPMENT) {
 			this.reports = this.desenvReport;
-			this.isRefresh = true;
-			this.isShowBack = true;
-			this.autoRefresh();
 		} else if (item.code == primaryCodes.ANALISYS) {
 			this.reports = this.analisysReport;
-			this.isChangeCard = false;
-			this.isShowBack = false;
-			this.isRefresh = true;
-			this.autoRefresh();
 		}
+
 		if (!this.selected.code || isChanged) this.selected = this.groupChild.find(value => !value.code);
+		if (isChanged) this.setFilterDefault();
+		this.autoRefresh();
 	}
 
 	autoRefresh() {
@@ -152,6 +153,13 @@ class ReportController {
 
 	isDevelopmentSelected() {
 		return this.getPrimarySelected().code == primaryCodes.DEVELOPMENT;
+	}
+
+	setFilterDefault() {
+		this.isRefresh = true;
+		this.isShowBack = true;
+		this.isShowSO = false;
+		this.isChangeCard = false;
 	}
 
 }

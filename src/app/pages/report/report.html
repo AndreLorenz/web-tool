@@ -29,10 +29,10 @@
             <div class="dropdown dropdown-breadcump-child">
               <a href="#" class="btn btn-secondary btn-sm dropdown-toggle btn-breadcump" data-toggle="dropdown" id="navbarDropdown">Filter
                 <span> : </span>
-                <span ng-if="!$ctrl.isShowBack || !$ctrl.isChangeCard || !$ctrl.isRefresh" ng-hide="$ctrl.isShowBack || $ctrl.isChangeCard || $ctrl.isRefresh" class="badge badge-warning" ng-if="$ctrl.isShowBack">Default </span>
-                <span class="badge badge-warning" ng-if="$ctrl.isShowBack">Show Backlog </span>
-                <span class="badge badge-warning" ng-if="$ctrl.isChangeCard">Change Cards </span>
-                <span class="badge badge-warning" ng-if="$ctrl.isShowSO">Show Service Orders </span>
+                <span ng-hide="$ctrl.isShowBack || $ctrl.isChangeCard || $ctrl.isRefresh || $ctrl.isShowSO" class="badge badge-warning">Default </span>
+                <span class="badge badge-warning" ng-if="$ctrl.isDevelopmentSelected() && $ctrl.isShowBack">Show Backlog </span>
+                <span class="badge badge-warning" ng-if="$ctrl.isDevelopmentSelected() && $ctrl.isChangeCard">Change Cards </span>
+                <span class="badge badge-warning" ng-if="$ctrl.isAnalisysSelected() && $ctrl.isShowSO">Show Service Orders </span>
                 <span class="badge badge-warning" ng-if="$ctrl.isRefresh">Auto Refresh </span>
               </a>
               <ul aria-labelledby="navbarDropdownMenuLink1">
