@@ -1,5 +1,13 @@
 'use strict';
 import template from './report.html';
+const primaryCodes = {
+	DEVELOPMENT: 1,
+	ANALISYS: 2
+};
+
+const reportCodes = {
+	ANALISYS: 352
+};
 
 class ReportController {
 
@@ -11,82 +19,73 @@ class ReportController {
 		this.messageService = messageService;
 		this.$interval = $interval;
 		this.$timeout = $timeout;
-		this.groups = [];
-		this.groupNames = [];
+		this.reports = [];
+		this.groupChild = [];
+		this.desenvNames = [];
+		this.analistsNames = [];
 		this.selected = {};
 		this.isRefresh = false;
-		this.viewAnalisys = false;
-		this.primary = [{ name: 'Developers', code: 1 }, { name: 'Analysts', code: 2 }];
+		this.primary = [{ name: 'Developers', code: 1, isSelected: true }, { name: 'Analysts', code: 2, isSelected: false }];
 		this.initializer();
 	}
 
 	initializer() {
-		// todo report
+		// Todo Report Events
 		this.$scope.$on('getTodoReportSuccess', (event, res) => {
-			this.selectedPrimary = { name: 'Developers', code: 1 };
-			this.desenv = res.filter(value => value.code !== 352);
-			this.groups = this.desenv;
-			this.groupNames = res.map(value => ({ name: value.name, code: value.code }));
-			this.desenvNames = this.desenv.map(value => ({ name: value.name, code: value.code }));
-			this.desenvNames.push({ name: "All groups", code: undefined });
-			if (!this.selected.code) this.selected = this.groupNames.find(value => !value.code);
+			this.desenvReport = res.filter(value => value.code !== reportCodes.ANALISYS);
+			this.desenvNames = this.desenvReport.map(value => ({ name: value.name, code: value.code }));
 			this.hasReport = true;
 			this.isRefreshLoader = undefined;
+
 			if (!this.isRefresh) {
 				this.isVev = true;
 				this.isProject = true;
 			}
-			this.changePrimary(this.selectedPrimary);
+			this.changePrimary(this.getPrimarySelected());
 		});
 		this.$scope.$on('getTodoReportError', (event, err) => {
 			this.messageService.open(err);
 			console.log(err);
 		});
-		//analisys report
+
+		// Analisys Report Events
 		this.$scope.$on('getAnalistReportSuccess', (event, res) => {
-			this.analists = res;
+			this.analisysReport = res;
 			this.analistsNames = res.filter(value => ({ name: value.dsAnalista, code: value.nmAnalista }));
-			this.analistsNames.push({ name: "All groups", code: undefined });
 		});
+
 		this.$scope.$on('getAnalistReportError', (event, err) => {
 			this.messageService.open(err);
 			console.log(err);
 		});
+
 	}
 
 	changeGroup(groupName) {
-		if (groupName.code == 2) {
-			this.selected = groupName;
-			this.isRefresh = true;
-			this.autoRefresh();
-		} else {
-			this.selected = groupName;
-			this.isRefresh = true;
-			this.autoRefresh();
-		}
+		this.selected = groupName;
+		this.isRefresh = true;
+		this.autoRefresh();
+		// Show SO's when an analyst is selected.
+		groupName.code ? this.isShowSO = true : this.isShowSO = false;
 	}
 
-	changePrimary(item) {
-		if (item.code == 1) {
-			this.groups = this.desenv;
-			this.groupChild = this.desenvNames;
-			this.selectedPrimary = item;
-			this.selected = { name: "All groups", code: undefined };
-			this.viewAnalisys = false;
+	changePrimary(item, isChanged) {
+		this.setPrimarySelected(item.code);
+		this.setGroupChild();
+
+		if (item.code == primaryCodes.DEVELOPMENT) {
+			this.reports = this.desenvReport;
 			this.isRefresh = true;
 			this.isShowBack = true;
 			this.autoRefresh();
-		} else {
+		} else if (item.code == primaryCodes.ANALISYS) {
+			this.reports = this.analisysReport;
 			this.isChangeCard = false;
-			this.groups = this.analists;
-			this.groupChild = this.analistsNames;
-			this.viewAnalisys = true;
 			this.isShowBack = false;
 			this.isRefresh = true;
-			this.selectedPrimary = item;
-			this.selected = { name: "All groups", code: undefined };
 			this.autoRefresh();
 		}
+		if (!this.selected.code || isChanged) this.selected = this.groupChild.find(value => !value.code);
 	}
 
 	autoRefresh() {
@@ -124,6 +123,35 @@ class ReportController {
 
 	validateAlertVev(func) {
 		return !func.DEVELOPMENT && !func.TRIAGE && !func.ANALISYS && !func.TECHNOLOGY && !func.TECHNOLOGYSOLIC && !func.OPERATION && func.VEV;
+	}
+
+	isObjectEmpty(obj = {}) {
+		return Object.keys(obj).length === 0;
+	}
+
+	getPrimarySelected() {
+		return this.primary.find(value => value.isSelected);
+	}
+
+	setPrimarySelected(code) {
+		this.primary.forEach(value => value.code == code ? value.isSelected = true : value.isSelected = false);
+	}
+
+	setGroupChild() {
+		const primaryCodeSelected = this.getPrimarySelected().code;
+		this.groupChild = [];
+		this.groupChild.push({ name: "All groups", code: undefined });
+
+		if (primaryCodeSelected == primaryCodes.DEVELOPMENT) this.groupChild = this.groupChild.concat(this.desenvNames);
+		else if (primaryCodeSelected == primaryCodes.ANALISYS) this.groupChild = this.groupChild.concat(this.analistsNames);
+	}
+
+	isAnalisysSelected() {
+		return this.getPrimarySelected().code == primaryCodes.ANALISYS;
+	}
+
+	isDevelopmentSelected() {
+		return this.getPrimarySelected().code == primaryCodes.DEVELOPMENT;
 	}
 
 }
